@@ -7,8 +7,12 @@ import { PublicUser, publicUserSelect } from './user.select.js';
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
+  /** Every user gets a wallet: bidders deposit into it, auctioneers receive payouts. */
   create(data: Prisma.UserCreateInput): Promise<PublicUser> {
-    return this.prisma.user.create({ data, select: publicUserSelect });
+    return this.prisma.user.create({
+      data: { ...data, wallet: { create: {} } },
+      select: publicUserSelect,
+    });
   }
 
   findByEmail(email: string) {
