@@ -32,7 +32,10 @@ export class BidsController {
   @Post('lots/:id/bids')
   @Idempotent()
   @ApiErrors({
-    400: [ErrorCode.IDEMPOTENCY_KEY_REQUIRED],
+    400: [
+      ErrorCode.IDEMPOTENCY_KEY_REQUIRED,
+      ErrorCode.IDEMPOTENCY_KEY_INVALID,
+    ],
     404: [ErrorCode.LOT_NOT_FOUND],
     409: [ErrorCode.REQUEST_IN_PROGRESS],
     422: [

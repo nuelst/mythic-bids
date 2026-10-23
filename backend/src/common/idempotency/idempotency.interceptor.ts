@@ -13,6 +13,8 @@ import { AppException } from '../errors/app.exception.js';
 import { ErrorCode } from '../errors/error-code.enum.js';
 import { IdempotencyService } from './idempotency.service.js';
 
+const MAX_KEY_LENGTH = 255;
+
 @Injectable()
 export class IdempotencyInterceptor implements NestInterceptor {
   constructor(private readonly idempotency: IdempotencyService) {}
@@ -31,6 +33,13 @@ export class IdempotencyInterceptor implements NestInterceptor {
         ErrorCode.IDEMPOTENCY_KEY_REQUIRED,
         HttpStatus.BAD_REQUEST,
         'Idempotency-Key header is required',
+      );
+    }
+    if (key.length > MAX_KEY_LENGTH) {
+      throw new AppException(
+        ErrorCode.IDEMPOTENCY_KEY_INVALID,
+        HttpStatus.BAD_REQUEST,
+        `Idempotency-Key must have at most ${MAX_KEY_LENGTH} characters`,
       );
     }
     const userId = request.user?.id;

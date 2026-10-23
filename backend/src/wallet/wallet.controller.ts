@@ -28,7 +28,10 @@ export class WalletController {
   @Roles('BIDDER')
   @Idempotent()
   @ApiErrors({
-    400: [ErrorCode.IDEMPOTENCY_KEY_REQUIRED],
+    400: [
+      ErrorCode.IDEMPOTENCY_KEY_REQUIRED,
+      ErrorCode.IDEMPOTENCY_KEY_INVALID,
+    ],
     403: true,
     409: [ErrorCode.REQUEST_IN_PROGRESS],
     422: [ErrorCode.IDEMPOTENCY_KEY_REUSED],

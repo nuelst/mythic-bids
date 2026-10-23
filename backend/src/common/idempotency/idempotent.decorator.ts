@@ -8,6 +8,7 @@ export const Idempotent = () =>
     ApiHeader({
       name: 'Idempotency-Key',
       required: true,
-      description: 'Unique key per operation (e.g. a UUID); retries reuse it.',
+      description:
+        'Unique key per operation (e.g. a UUID, up to 255 characters); retries reuse it.',
     }),
   );
