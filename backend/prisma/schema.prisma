@@ -75,3 +75,95 @@ model LedgerEntry {
   @@index([userId, createdAt])
   @@map("ledger_entries")
 }
+
+enum ImageStatus {
+  PENDING
+  MIRRORED
+  FAILED
+}
+
+enum TranslationOrigin {
+  ORACLE
+  PRINTED
+  SIBLING
+}
+
+/// A Scryfall printing in one language. Rows are never updated, so a lot can reference them as a snapshot.
+model CatalogItem {
+  id              String      @id @default(uuid(7)) @db.Uuid
+  scryfallId      String      @unique @map("scryfall_id") @db.Uuid
+  oracleId        String?     @map("oracle_id") @db.Uuid
+  setCode         String      @map("set_code")
+  setName         String      @map("set_name")
+  collectorNumber String      @map("collector_number")
+  lang            String
+  rarity          String
+  manaCost        String?     @map("mana_cost")
+  colors          String[]
+  artist          String?
+  releasedAt      DateTime?   @map("released_at") @db.Date
+  referencePrice  Json?       @map("reference_price")
+  sourceImageUrl  String?     @map("source_image_url")
+  imageStatus     ImageStatus @default(PENDING) @map("image_status")
+  createdAt       DateTime    @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  translations CatalogItemTranslation[]
+  image        CatalogImage?
+  jobs         CatalogJob[]
+
+  @@map("catalog_items")
+}
+
+model CatalogItemTranslation {
+  itemId     String            @map("item_id") @db.Uuid
+  locale     String
+  name       String
+  typeLine   String?           @map("type_line")
+  rulesText  String?           @map("rules_text")
+  flavorText String?           @map("flavor_text")
+  origin     TranslationOrigin
+
+  item CatalogItem @relation(fields: [itemId], references: [id])
+
+  @@id([itemId, locale])
+  @@map("catalog_item_translations")
+}
+
+model CatalogImage {
+  itemId      String   @id @map("item_id") @db.Uuid
+  contentType String   @map("content_type")
+  data        Bytes
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  item CatalogItem @relation(fields: [itemId], references: [id])
+
+  @@map("catalog_images")
+}
+
+enum CatalogJobType {
+  IMAGE_MIRROR
+  TRANSLATE
+}
+
+enum JobStatus {
+  PENDING
+  DONE
+  FAILED
+}
+
+model CatalogJob {
+  id        String         @id @default(uuid(7)) @db.Uuid
+  type      CatalogJobType
+  itemId    String         @map("item_id") @db.Uuid
+  status    JobStatus      @default(PENDING)
+  attempts  Int            @default(0)
+  runAfter  DateTime       @default(now()) @map("run_after") @db.Timestamptz(3)
+  lastError String?        @map("last_error")
+  createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  item CatalogItem @relation(fields: [itemId], references: [id])
+
+  @@unique([type, itemId])
+  @@index([status, runAfter])
+  @@map("catalog_jobs")
+}
