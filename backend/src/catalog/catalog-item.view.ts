@@ -1,5 +1,6 @@
 import { Prisma } from '../generated/prisma/client.js';
-import { DEFAULT_LOCALE, Locale } from '../common/locale/locale.js';
+import { DEFAULT_LOCALE, isLocale, Locale } from '../common/locale/locale.js';
+import { CatalogItemDto, ReferencePriceDto } from './dto/catalog-item.dto.js';
 
 export const catalogItemInclude = {
   translations: true,
@@ -16,7 +17,7 @@ export const catalogImagePath = (itemId: string) =>
 export function toCatalogItemView(
   item: CatalogItemWithTranslations,
   locale: Locale,
-) {
+): CatalogItemDto {
   const text =
     item.translations.find((t) => t.locale === locale) ??
     item.translations.find((t) => t.locale === DEFAULT_LOCALE) ??
@@ -24,7 +25,7 @@ export function toCatalogItemView(
 
   return {
     id: item.id,
-    locale: text?.locale ?? DEFAULT_LOCALE,
+    locale: text && isLocale(text.locale) ? text.locale : DEFAULT_LOCALE,
     name: text?.name ?? '',
     typeLine: text?.typeLine ?? null,
     rulesText: text?.rulesText ?? null,
@@ -38,9 +39,7 @@ export function toCatalogItemView(
     colors: item.colors,
     artist: item.artist,
     releasedAt: item.releasedAt,
-    referencePrice: item.referencePrice,
+    referencePrice: item.referencePrice as ReferencePriceDto | null,
     imageUrl: catalogImagePath(item.id),
   };
 }
-
-export type CatalogItemView = ReturnType<typeof toCatalogItemView>;

@@ -16,6 +16,7 @@ import {
   WalletService,
 } from '../wallet/wallet.service.js';
 import { BidRejection, rejectBid } from './bid.policy.js';
+import type { BidOutcome } from './dto/bid-result.dto.js';
 
 const rejected = ({ code, message, minimumCents }: BidRejection) =>
   new AppException(
@@ -172,7 +173,7 @@ export class BidsService {
       currentLeaderId: string | null;
     },
     bidderId: string,
-  ) {
+  ): BidOutcome {
     if (lot.status === 'CANCELLED') return 'CANCELLED';
     if (lot.status === 'SETTLED')
       return lot.winnerId === bidderId ? 'WON' : 'LOST';

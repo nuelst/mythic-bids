@@ -1,4 +1,6 @@
+import type { Type as Class } from '@nestjs/common';
 import { Type } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsOptional, Max, Min } from 'class-validator';
 
 export class PaginationQueryDto {
@@ -32,4 +34,22 @@ export function toPage<T>(
   { page, pageSize }: PaginationQueryDto,
 ): Page<T> {
   return { items, page, pageSize, total };
+}
+
+/** Swagger schema for a page of `item`: `class LotPageDto extends PageDto(LotDto) {}`. */
+export function PageDto<T>(item: Class<T>) {
+  abstract class PageOf {
+    @ApiProperty({ type: [item] })
+    items: T[];
+
+    @ApiProperty()
+    page: number;
+
+    @ApiProperty()
+    pageSize: number;
+
+    @ApiProperty()
+    total: number;
+  }
+  return PageOf;
 }

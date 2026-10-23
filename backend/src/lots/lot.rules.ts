@@ -2,8 +2,14 @@ import { LotStatus } from '../generated/prisma/enums.js';
 
 export const ANTI_SNIPING_WINDOW_MS = 2 * 60 * 1000;
 
-export type LotPhase =
-  'SCHEDULED' | 'LIVE' | 'CLOSING' | 'CLOSED' | 'CANCELLED';
+export const LOT_PHASES = [
+  'SCHEDULED',
+  'LIVE',
+  'CLOSING',
+  'CLOSED',
+  'CANCELLED',
+] as const;
+export type LotPhase = (typeof LOT_PHASES)[number];
 
 interface LotTiming {
   status: LotStatus;

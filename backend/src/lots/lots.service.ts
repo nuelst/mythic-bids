@@ -157,11 +157,13 @@ export class LotsService {
       serverTime: now,
       leaderAlias: lot.bids[0]?.bidderAlias ?? null,
       bids: lot.bids,
-      viewer: me && {
-        alias: me,
-        isLeading: lot.currentLeaderId === viewer!.id,
-        ...standing(lot.bids, me),
-      },
+      viewer: me
+        ? {
+            alias: me,
+            isLeading: lot.currentLeaderId === viewer!.id,
+            ...standing(lot.bids, me),
+          }
+        : null,
     };
   }
 

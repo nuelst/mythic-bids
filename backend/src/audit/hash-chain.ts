@@ -66,15 +66,17 @@ export const sealHash = (s: SealFields) =>
     s.issuedAt.toISOString(),
   ]);
 
-export type AuditIssueCode =
-  | 'GENESIS_TAMPERED'
-  | 'SEQUENCE_GAP'
-  | 'BROKEN_LINK'
-  | 'HASH_MISMATCH'
-  | 'INVALID_SIGNATURE'
-  | 'RULE_VIOLATION'
-  | 'HEAD_MISMATCH'
-  | 'SEAL_MISMATCH';
+export const AUDIT_ISSUE_CODES = [
+  'GENESIS_TAMPERED',
+  'SEQUENCE_GAP',
+  'BROKEN_LINK',
+  'HASH_MISMATCH',
+  'INVALID_SIGNATURE',
+  'RULE_VIOLATION',
+  'HEAD_MISMATCH',
+  'SEAL_MISMATCH',
+] as const;
+export type AuditIssueCode = (typeof AUDIT_ISSUE_CODES)[number];
 
 export interface AuditIssue {
   code: AuditIssueCode;

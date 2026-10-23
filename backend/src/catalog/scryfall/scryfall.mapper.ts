@@ -1,5 +1,5 @@
 import { Prisma, TranslationOrigin } from '../../generated/prisma/client.js';
-import { LOCALES, Locale } from '../../common/locale/locale.js';
+import { isLocale } from '../../common/locale/locale.js';
 import { ScryfallCard } from './scryfall.types.js';
 
 type FaceField = Exclude<
@@ -22,9 +22,6 @@ function field(card: ScryfallCard, key: FaceField, separator = ' // ') {
       .join(separator);
   return value || null;
 }
-
-const isLocale = (lang: string): lang is Locale =>
-  (LOCALES as readonly string[]).includes(lang);
 
 export function toItemData(
   card: ScryfallCard,
