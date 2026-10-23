@@ -1,4 +1,9 @@
-import { endsAtAfterBid, lotPhase, minimumBidCents } from './lot.rules.js';
+import {
+  endsAtAfterBid,
+  lotPhase,
+  minimumBidCents,
+  standing,
+} from './lot.rules.js';
 
 const at = (iso: string) => new Date(`2026-01-01T${iso}Z`);
 
@@ -57,5 +62,34 @@ describe('endsAtAfterBid', () => {
   it('extends to 2 minutes after a bid in the last 2 minutes', () => {
     expect(endsAtAfterBid(endsAt, at('10:58:01'))).toEqual(at('11:00:01'));
     expect(endsAtAfterBid(endsAt, at('10:59:59'))).toEqual(at('11:01:59'));
+  });
+});
+
+describe('standing', () => {
+  const bids = [
+    { bidderAlias: 'A', amountCents: 1000n },
+    { bidderAlias: 'B', amountCents: 1100n },
+    { bidderAlias: 'C', amountCents: 1200n },
+    { bidderAlias: 'A', amountCents: 1500n },
+  ];
+
+  it('ranks bidders by their best bid', () => {
+    expect(standing(bids, 'A')).toEqual({
+      myHighestCents: 1500n,
+      position: 1,
+      bidders: 3,
+    });
+    expect(standing(bids, 'B')).toEqual({
+      myHighestCents: 1100n,
+      position: 3,
+      bidders: 3,
+    });
+  });
+
+  it('has no position for someone who did not bid', () => {
+    expect(standing(bids, 'Z')).toMatchObject({
+      myHighestCents: null,
+      position: null,
+    });
   });
 });

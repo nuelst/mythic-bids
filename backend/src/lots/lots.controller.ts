@@ -30,13 +30,15 @@ export class LotsController {
     return this.lots.showcase(query, locale);
   }
 
+  /** Public; with a bidder token it also returns the viewer's position. */
   @Public()
   @Get(':id')
-  findOne(
+  room(
     @Param('id', ParseUUIDPipe) id: string,
     @RequestLocale() locale: Locale,
+    @CurrentUser() viewer?: AuthUser,
   ) {
-    return this.lots.findOne(id, locale);
+    return this.lots.room(id, locale, viewer);
   }
 
   @Post()

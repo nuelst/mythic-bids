@@ -1,6 +1,7 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { Prisma } from '../generated/prisma/client.js';
+import type { AuthUser } from '../auth/auth-user.js';
 import { AuditService } from '../audit/audit.service.js';
 import { CatalogService } from '../catalog/catalog.service.js';
 import { Clock } from '../common/clock/clock.js';
@@ -12,7 +13,7 @@ import { PrismaService } from '../prisma/prisma.service.js';
 import { WalletService } from '../wallet/wallet.service.js';
 import { CreateLotDto } from './dto/create-lot.dto.js';
 import { ShowcasePhase, ShowcaseQueryDto } from './dto/showcase-query.dto.js';
-import { lotPhase } from './lot.rules.js';
+import { lotPhase, standing } from './lot.rules.js';
 import { lotInclude, toLotView } from './lot.view.js';
 
 const MIN_DURATION_MS = 60_000;
@@ -127,6 +128,42 @@ export class LotsService {
     });
     if (!lot) throw lotNotFound();
     return toLotView(lot, locale, this.clock.now());
+  }
+
+  /** Live room: lot state, public bid history and, for a bidder, where they stand. */
+  async room(lotId: string, locale: Locale, viewer?: AuthUser) {
+    const lot = await this.prisma.lot.findUnique({
+      where: { id: lotId },
+      include: {
+        ...lotInclude,
+        bids: {
+          orderBy: { seq: 'desc' },
+          select: {
+            seq: true,
+            bidderAlias: true,
+            amountCents: true,
+            createdAt: true,
+          },
+        },
+      },
+    });
+    if (!lot) throw lotNotFound();
+
+    const now = this.clock.now();
+    const me =
+      viewer?.role === 'BIDDER' ? this.audit.alias(viewer.id, lotId) : null;
+
+    return {
+      ...toLotView(lot, locale, now),
+      serverTime: now,
+      leaderAlias: lot.bids[0]?.bidderAlias ?? null,
+      bids: lot.bids,
+      viewer: me && {
+        alias: me,
+        isLeading: lot.currentLeaderId === viewer!.id,
+        ...standing(lot.bids, me),
+      },
+    };
   }
 
   async showcase(query: ShowcaseQueryDto, locale: Locale) {

@@ -42,3 +42,23 @@ export function endsAtAfterBid(endsAt: Date, now: Date): Date {
     ? new Date(now.getTime() + ANTI_SNIPING_WINDOW_MS)
     : endsAt;
 }
+
+/** The bidder's best bid and rank among distinct bidders (1 = leading), from the public history. */
+export function standing(
+  bids: { bidderAlias: string; amountCents: bigint }[],
+  alias: string,
+) {
+  const best = new Map<string, bigint>();
+  for (const bid of bids) {
+    if ((best.get(bid.bidderAlias) ?? 0n) < bid.amountCents) {
+      best.set(bid.bidderAlias, bid.amountCents);
+    }
+  }
+  const myHighestCents = best.get(alias) ?? null;
+  const position =
+    myHighestCents === null
+      ? null
+      : [...best.values()].filter((amount) => amount > myHighestCents).length +
+        1;
+  return { myHighestCents, position, bidders: best.size };
+}
