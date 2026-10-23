@@ -2,7 +2,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import './common/money/bigint-json.js';
 import { AppModule } from './app.module.js';
 import { Env } from './config/env.validation.js';
 
