@@ -1,3 +1,12 @@
+export const CARD_RARITIES = [
+  'common',
+  'uncommon',
+  'rare',
+  'mythic',
+  'special',
+  'bonus',
+] as const;
+
 interface ScryfallFace {
   name: string;
   printed_name?: string;

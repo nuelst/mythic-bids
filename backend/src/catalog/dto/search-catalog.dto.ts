@@ -1,15 +1,18 @@
 import { Type } from 'class-transformer';
+import { Trim } from '../../common/validation/transforms.js';
 import {
   IsInt,
   IsOptional,
   IsString,
   Length,
   Matches,
+  Max,
   Min,
 } from 'class-validator';
 
 export class SearchCatalogDto {
   /** Card name or any Scryfall search syntax. */
+  @Trim()
   @IsString()
   @Length(2, 100)
   q: string;
@@ -23,5 +26,6 @@ export class SearchCatalogDto {
   @Type(() => Number)
   @IsInt()
   @Min(1)
+  @Max(1000)
   page: number = 1;
 }

@@ -19,6 +19,7 @@ import { lotPhase, standing } from './lot.rules.js';
 import { lotInclude, toLotView } from './lot.view.js';
 
 const MIN_DURATION_MS = 60_000;
+const MAX_SCHEDULE_MS = 90 * 24 * 60 * 60_000;
 
 @Injectable()
 export class LotsService {
@@ -49,6 +50,13 @@ export class LotsService {
         ErrorCode.INVALID_SCHEDULE,
         HttpStatus.UNPROCESSABLE_ENTITY,
         'The lot must end at least one minute after it starts',
+      );
+    }
+    if (endsAt.getTime() - now.getTime() > MAX_SCHEDULE_MS) {
+      throw new AppException(
+        ErrorCode.INVALID_SCHEDULE,
+        HttpStatus.UNPROCESSABLE_ENTITY,
+        'The lot must end within 90 days',
       );
     }
 
