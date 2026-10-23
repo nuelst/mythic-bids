@@ -138,7 +138,7 @@ export class BidsService {
     const [lots, total] = await this.prisma.$transaction([
       this.prisma.lot.findMany({
         where,
-        include: lotInclude,
+        include: { ...lotInclude, receipt: { select: { publicToken: true } } },
         orderBy: { endsAt: 'desc' },
         skip: query.skip,
         take: query.pageSize,
@@ -159,6 +159,8 @@ export class BidsService {
       lot: toLotView(lot, locale, now),
       myHighestCents: highestOf.get(lot.id) ?? null,
       outcome: this.outcome(lot, bidderId),
+      receiptToken:
+        lot.winnerId === bidderId ? (lot.receipt?.publicToken ?? null) : null,
     }));
     return toPage([items, total], query);
   }
