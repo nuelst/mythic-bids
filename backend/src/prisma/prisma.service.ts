@@ -11,6 +11,8 @@ export class PrismaService extends PrismaClient implements OnModuleDestroy {
       adapter: new PrismaPg({
         connectionString: config.get('DATABASE_URL', { infer: true }),
       }),
+      // Concurrent bids on the same lot queue on its row lock, so allow more than the 2s/5s defaults.
+      transactionOptions: { maxWait: 10_000, timeout: 15_000 },
     });
   }
 
