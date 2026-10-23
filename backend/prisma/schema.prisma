@@ -37,6 +37,9 @@ model User {
 
   wallet        Wallet?
   ledgerEntries LedgerEntry[]
+  lotsSelling   Lot[]         @relation("seller")
+  lotsLeading   Lot[]         @relation("leader")
+  lotsWon       Lot[]         @relation("winner")
 
   @@map("users")
 }
@@ -110,6 +113,7 @@ model CatalogItem {
   translations CatalogItemTranslation[]
   image        CatalogImage?
   jobs         CatalogJob[]
+  lots         Lot[]
 
   @@map("catalog_items")
 }
@@ -166,4 +170,44 @@ model CatalogJob {
   @@unique([type, itemId])
   @@index([status, runAfter])
   @@map("catalog_jobs")
+}
+
+enum LotStatus {
+  OPEN
+  SETTLED
+  CANCELLED
+}
+
+model Lot {
+  id                 String    @id @db.Uuid
+  sellerId           String    @map("seller_id") @db.Uuid
+  itemId             String    @map("item_id") @db.Uuid
+  startingPriceCents BigInt    @map("starting_price_cents")
+  minIncrementCents  BigInt    @map("min_increment_cents")
+  startsAt           DateTime  @map("starts_at") @db.Timestamptz(3)
+  /// Moves forward with anti-sniping; originalEndsAt keeps the signed value.
+  endsAt             DateTime  @map("ends_at") @db.Timestamptz(3)
+  originalEndsAt     DateTime  @map("original_ends_at") @db.Timestamptz(3)
+  status             LotStatus @default(OPEN)
+  currentPriceCents  BigInt?   @map("current_price_cents")
+  currentLeaderId    String?   @map("current_leader_id") @db.Uuid
+  bidCount           Int       @default(0) @map("bid_count")
+  genesisHash        String    @map("genesis_hash")
+  genesisSignature   String    @map("genesis_signature")
+  headHash           String    @map("head_hash")
+  winnerId           String?   @map("winner_id") @db.Uuid
+  finalPriceCents    BigInt?   @map("final_price_cents")
+  settledAt          DateTime? @map("settled_at") @db.Timestamptz(3)
+  cancelledAt        DateTime? @map("cancelled_at") @db.Timestamptz(3)
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  seller User        @relation("seller", fields: [sellerId], references: [id])
+  leader User?       @relation("leader", fields: [currentLeaderId], references: [id])
+  winner User?       @relation("winner", fields: [winnerId], references: [id])
+  item   CatalogItem @relation(fields: [itemId], references: [id])
+
+  @@index([status, endsAt])
+  @@index([status, startsAt])
+  @@index([sellerId])
+  @@map("lots")
 }
