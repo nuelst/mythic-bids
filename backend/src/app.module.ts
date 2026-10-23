@@ -3,6 +3,7 @@ import './common/money/bigint-json.js';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module.js';
+import { BidsModule } from './bids/bids.module.js';
 import { CatalogModule } from './catalog/catalog.module.js';
 import { CommonModule } from './common/common.module.js';
 import { validateEnv } from './config/env.validation.js';
@@ -26,6 +27,7 @@ import { WalletModule } from './wallet/wallet.module.js';
     WalletModule,
     CatalogModule,
     LotsModule,
+    BidsModule,
   ],
 })
 export class AppModule {}
