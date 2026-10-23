@@ -23,7 +23,9 @@
     "postinstall": "prisma generate",
     "db:migrate": "sh -c 'prisma migrate dev \"$@\" && prisma generate' --",
     "db:deploy": "prisma migrate deploy",
-    "secrets": "node scripts/generate-secrets.mjs"
+    "secrets": "node scripts/generate-secrets.mjs",
+    "seed": "nest build && node dist/seed/main.js",
+    "seed:prod": "node dist/seed/main.js"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^12.0.1",

@@ -7,7 +7,15 @@
     "plugins": [
       {
         "name": "@nestjs/swagger",
-        "options": { "introspectComments": true }
+        "options": {
+          "introspectComments": true
+        }
+      }
+    ],
+    "assets": [
+      {
+        "include": "seed/fixtures/*.json",
+        "outDir": "dist"
       }
     ]
   }
