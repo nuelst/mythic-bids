@@ -25,8 +25,8 @@ export class Env {
   @IsNotEmpty()
   JWT_SECRET: string;
 
-  @IsString()
-  JWT_EXPIRES_IN = '1d';
+  @IsInt()
+  JWT_TTL_SECONDS: number = 86400;
 
   @IsString()
   @IsNotEmpty()
