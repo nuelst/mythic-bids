@@ -40,6 +40,7 @@ model User {
   lotsSelling   Lot[]         @relation("seller")
   lotsLeading   Lot[]         @relation("leader")
   lotsWon       Lot[]         @relation("winner")
+  bids          Bid[]
 
   @@map("users")
 }
@@ -205,6 +206,7 @@ model Lot {
   leader User?       @relation("leader", fields: [currentLeaderId], references: [id])
   winner User?       @relation("winner", fields: [winnerId], references: [id])
   item   CatalogItem @relation(fields: [itemId], references: [id])
+  bids   Bid[]
 
   @@index([status, endsAt])
   @@index([status, startsAt])
@@ -226,4 +228,25 @@ model OutboxEvent {
   @@index([txId, id])
   @@index([createdAt])
   @@map("outbox_events")
+}
+
+/// Append-only; each row is a signed link of the lot's hash chain.
+model Bid {
+  id          String   @id @default(uuid(7)) @db.Uuid
+  lotId       String   @map("lot_id") @db.Uuid
+  seq         Int
+  bidderId    String   @map("bidder_id") @db.Uuid
+  bidderAlias String   @map("bidder_alias")
+  amountCents BigInt   @map("amount_cents")
+  createdAt   DateTime @map("created_at") @db.Timestamptz(3)
+  prevHash    String   @map("prev_hash")
+  hash        String
+  signature   String
+
+  lot    Lot  @relation(fields: [lotId], references: [id])
+  bidder User @relation(fields: [bidderId], references: [id])
+
+  @@unique([lotId, seq])
+  @@index([bidderId])
+  @@map("bids")
 }
