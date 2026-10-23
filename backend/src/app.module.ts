@@ -6,6 +6,7 @@ import { CatalogModule } from './catalog/catalog.module.js';
 import { CommonModule } from './common/common.module.js';
 import { validateEnv } from './config/env.validation.js';
 import { HealthModule } from './health/health.module.js';
+import { LotsModule } from './lots/lots.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { UsersModule } from './users/users.module.js';
 import { WalletModule } from './wallet/wallet.module.js';
@@ -21,6 +22,7 @@ import { WalletModule } from './wallet/wallet.module.js';
     AuthModule,
     WalletModule,
     CatalogModule,
+    LotsModule,
   ],
 })
 export class AppModule {}
