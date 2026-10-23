@@ -77,12 +77,33 @@ Os testes e2e cobrem:
 | Variável | Descrição |
 |---|---|
 | `DATABASE_URL` | Ligação ao PostgreSQL |
+| `DIRECT_DATABASE_URL` | Opcional: ligação direta usada pelas migrations (quando `DATABASE_URL` passa por um pooler) |
 | `PUBLIC_URL` | URL pública da API |
-| `CORS_ORIGIN` | Origem do frontend |
+| `CORS_ORIGIN` | Origens do frontend, separadas por vírgula |
 | `JWT_SECRET`, `JWT_TTL_SECONDS` | Assinatura e validade do token de acesso |
 | `ALIAS_SECRET` | Segredo HMAC dos pseudónimos dos licitantes |
 | `AUDIT_PRIVATE_KEY` | Chave privada Ed25519 (PKCS8 DER em base64) que assina o histórico |
 | `SCRYFALL_URL` | API de cartas (por omissão `https://api.scryfall.com`) |
+
+### Deploy (Render + Neon)
+
+1. **Neon:** cria um projeto PostgreSQL 17 na mesma região do Render (ex.: Frankfurt, `aws-eu-central-1`) e copia as duas connection strings:
+   - **pooled** (host com `-pooler`), que será o `DATABASE_URL`;
+   - **direct**, que será o `DIRECT_DATABASE_URL`, usado pelas migrations.
+2. **Segredos:** gera-os uma única vez com `pnpm secrets`.
+3. **Render:** cria um *Blueprint* a partir do repositório. O `render.yaml` da raiz define o serviço Docker com health check em `/health`. Preenche as variáveis:
+   - as duas URLs do Neon;
+   - os três segredos;
+   - `PUBLIC_URL` (URL do serviço no Render);
+   - `CORS_ORIGIN` (URL do frontend; aceita várias, separadas por vírgula).
+4. **Migrations:** são aplicadas automaticamente quando o container arranca.
+5. **Seed:** o plano free não tem shell, por isso corre da tua máquina com as **mesmas** variáveis do Render:
+   ```bash
+   DATABASE_URL="<neon direct>" JWT_SECRET=... ALIAS_SECRET=... AUDIT_PRIVATE_KEY=... pnpm seed
+   ```
+   Com segredos diferentes, a auditoria marcaria os lances do seed como adulterados, porque estariam assinados com outra chave.
+
+No plano free, o Render adormece o serviço após 15 min sem pedidos, e o primeiro pedido seguinte demora ~1 min. Os lotes que terminarem enquanto o serviço dorme são liquidados logo que acorda.
 
 ---
 
