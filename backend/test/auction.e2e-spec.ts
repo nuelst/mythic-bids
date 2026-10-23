@@ -60,7 +60,9 @@ describe('Auction flow (e2e)', () => {
 
     t.clock.set(new Date(lastMinute.getTime() + 121_000));
     await bid(t, bruno, lotId, 2_000).expect(422, /LOT_CLOSED/);
-    await t.app.get(SettlementService).settleNext();
+    // Settles every due lot, like the worker does (the test database keeps lots from other runs).
+    const settlement = t.app.get(SettlementService);
+    while (await settlement.settleNext());
 
     const mine = await t.http().get('/me/bids').set(ana.auth).expect(200);
     const [won] = mine.body.items;
