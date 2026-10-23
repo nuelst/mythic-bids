@@ -41,6 +41,7 @@ model User {
   lotsLeading   Lot[]         @relation("leader")
   lotsWon       Lot[]         @relation("winner")
   bids          Bid[]
+  receipts      Receipt[]
 
   @@map("users")
 }
@@ -206,7 +207,8 @@ model Lot {
   leader User?       @relation("leader", fields: [currentLeaderId], references: [id])
   winner User?       @relation("winner", fields: [winnerId], references: [id])
   item   CatalogItem @relation(fields: [itemId], references: [id])
-  bids   Bid[]
+  bids    Bid[]
+  receipt Receipt?
 
   @@index([status, endsAt])
   @@index([status, startsAt])
@@ -249,4 +251,24 @@ model Bid {
   @@unique([lotId, seq])
   @@index([bidderId])
   @@map("bids")
+}
+
+/// Proof of purchase; the seal signs the final state of the bid chain.
+model Receipt {
+  id            String   @id @default(uuid(7)) @db.Uuid
+  lotId         String   @unique @map("lot_id") @db.Uuid
+  /// Unguessable token used in the public share link.
+  publicToken   String   @unique @map("public_token")
+  winnerId      String   @map("winner_id") @db.Uuid
+  winnerAlias   String   @map("winner_alias")
+  amountCents   BigInt   @map("amount_cents")
+  bidCount      Int      @map("bid_count")
+  finalHash     String   @map("final_hash")
+  sealSignature String   @map("seal_signature")
+  issuedAt      DateTime @map("issued_at") @db.Timestamptz(3)
+
+  lot    Lot  @relation(fields: [lotId], references: [id])
+  winner User @relation(fields: [winnerId], references: [id])
+
+  @@map("receipts")
 }
