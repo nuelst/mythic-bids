@@ -53,7 +53,7 @@ Lotes criados pelo seed:
   - um com 4 lances e fim em **30 dias**, para continuar ao vivo quando a aplicação for avaliada;
   - um que **termina 5 minutos** depois do seed, para ver a contagem, o anti-sniping e o fecho.
 - **2 agendados.**
-- **2 encerrados:** um vendido, com comprovante, e um sem lances.
+- **2 que encerram 90s depois do seed:** um vendido, com comprovante, e um sem lances. A API liquida-os sozinha quando terminam, por isso o seed pode correr com a API ligada (o caso do Render).
 - **1 cancelado**, que não aparece na vitrine.
 
 Os lances do seed passam pelo mesmo fluxo da API. A hash chain, o ledger e os comprovantes são reais e a auditoria de todos os lotes dá `intact: true`.

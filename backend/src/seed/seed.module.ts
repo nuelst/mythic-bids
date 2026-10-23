@@ -8,7 +8,6 @@ import { validateEnv } from '../config/env.validation.js';
 import { EventsModule } from '../events/events.module.js';
 import { LotsModule } from '../lots/lots.module.js';
 import { PrismaModule } from '../prisma/prisma.module.js';
-import { SettlementModule } from '../settlement/settlement.module.js';
 import { WalletModule } from '../wallet/wallet.module.js';
 import { Seeder } from './seeder.js';
 
@@ -24,7 +23,6 @@ import { Seeder } from './seeder.js';
     CatalogModule,
     LotsModule,
     BidsModule,
-    SettlementModule,
   ],
   providers: [Seeder],
 })

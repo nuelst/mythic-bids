@@ -7,13 +7,13 @@ import { ScryfallCard } from '../catalog/scryfall/scryfall.types.js';
 import { Clock } from '../common/clock/clock.js';
 import { LotsService } from '../lots/lots.service.js';
 import { PrismaService } from '../prisma/prisma.service.js';
-import { SettlementService } from '../settlement/settlement.service.js';
 import { WalletService } from '../wallet/wallet.service.js';
 
 const PASSWORD = 'demo1234';
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
+const CLOSES_SOON = 90_000;
 
 interface FixtureEntry {
   card: ScryfallCard;
@@ -87,11 +87,13 @@ const LOTS: LotPlan[] = [
   // Scheduled.
   { card: 4, start: DAY, end: 4 * DAY, price: 1_500, increment: 100 },
   { card: 11, start: 2 * DAY, end: 6 * DAY, price: 12_000, increment: 1_000 },
-  // Closed: one sold (with receipt), one without bids.
+  // Closed soon after seeding: one sold (with receipt), one without bids. They end in the near
+  // future instead of the past so the running API's settlement worker cannot close them before
+  // their bids exist; it settles them (and issues the receipt) once they end.
   {
     card: 10,
     start: -3 * DAY,
-    end: -3 * DAY + 2 * HOUR,
+    end: CLOSES_SOON,
     price: 25_000,
     increment: 2_000,
     bids: [
@@ -103,7 +105,7 @@ const LOTS: LotPlan[] = [
   {
     card: 6,
     start: -2 * DAY,
-    end: -2 * DAY + HOUR,
+    end: CLOSES_SOON,
     price: 8_000,
     increment: 500,
   },
@@ -120,7 +122,6 @@ export class Seeder {
     private readonly catalog: CatalogService,
     private readonly lots: LotsService,
     private readonly bids: BidsService,
-    private readonly settlement: SettlementService,
     private readonly clock: Clock,
   ) {}
 
@@ -133,14 +134,10 @@ export class Seeder {
     for (const plan of LOTS) {
       await this.seedLot(plan, now, itemIds, users);
     }
-    // Settles the lots that already ended, issuing their receipts.
-    await this.at(now, async () => {
-      while (await this.settlement.settleNext());
-    });
     await this.cancelledLot(itemIds[15], users.seller);
 
     this.logger.log(
-      `Seeded ${LOTS.length + 1} lots. Login with leiloeiro@demo.com, ana@demo.com or bruno@demo.com / ${PASSWORD}`,
+      `Seeded ${LOTS.length + 1} lots; two of them close in ${CLOSES_SOON / 1000}s and are settled by the API. Login with leiloeiro@demo.com, ana@demo.com or bruno@demo.com / ${PASSWORD}`,
     );
   }
 
