@@ -9,6 +9,7 @@ import { AppException } from '../common/errors/app.exception.js';
 import { ErrorCode } from '../common/errors/error-code.enum.js';
 import { Locale } from '../common/locale/locale.js';
 import { PaginationQueryDto, toPage } from '../common/pagination/pagination.js';
+import { DomainEvent, EventsService } from '../events/events.service.js';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { WalletService } from '../wallet/wallet.service.js';
 import { CreateLotDto } from './dto/create-lot.dto.js';
@@ -32,6 +33,7 @@ export class LotsService {
     private readonly catalog: CatalogService,
     private readonly audit: AuditService,
     private readonly wallet: WalletService,
+    private readonly events: EventsService,
     private readonly clock: Clock,
   ) {}
 
@@ -102,7 +104,9 @@ export class LotsService {
         );
       }
 
+      const events: DomainEvent[] = [{ type: 'lot.cancelled', lotId }];
       if (lot.currentLeaderId && lot.currentPriceCents) {
+        events.push({ type: 'wallet.changed', userId: lot.currentLeaderId });
         await this.wallet.lock(tx, [lot.currentLeaderId]);
         await this.wallet.apply(tx, [
           {
@@ -117,6 +121,7 @@ export class LotsService {
         where: { id: lotId },
         data: { status: 'CANCELLED', cancelledAt: this.clock.now() },
       });
+      await this.events.emit(tx, events);
     });
     return this.findOne(lotId, locale);
   }
