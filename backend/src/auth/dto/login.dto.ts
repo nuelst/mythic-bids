@@ -1,12 +1,14 @@
-import { Transform } from 'class-transformer';
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsString, Length, MaxLength } from 'class-validator';
+import { NormalizeEmail } from '../../common/validation/transforms.js';
 
 export class LoginDto {
+  @NormalizeEmail()
   @IsEmail()
-  @Transform(({ value }: { value: string }) => value?.trim().toLowerCase())
+  @MaxLength(254)
   email: string;
 
+  /** 8 to 72 characters: bcrypt ignores anything after 72 bytes. */
   @IsString()
-  @MinLength(8)
+  @Length(8, 72)
   password: string;
 }
