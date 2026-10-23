@@ -11,6 +11,7 @@ import { EventsModule } from './events/events.module.js';
 import { HealthModule } from './health/health.module.js';
 import { LotsModule } from './lots/lots.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
+import { SettlementModule } from './settlement/settlement.module.js';
 import { UsersModule } from './users/users.module.js';
 import { WalletModule } from './wallet/wallet.module.js';
 
@@ -28,6 +29,7 @@ import { WalletModule } from './wallet/wallet.module.js';
     CatalogModule,
     LotsModule,
     BidsModule,
+    SettlementModule,
   ],
 })
 export class AppModule {}
