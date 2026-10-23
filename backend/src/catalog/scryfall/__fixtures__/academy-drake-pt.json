@@ -1,0 +1,28 @@
+{
+  "id": "06c71eb8-2aff-41c1-9b5a-695099e7855e",
+  "oracle_id": "65f3ebeb-1ca5-4923-b681-032579991c8a",
+  "lang": "pt",
+  "name": "Academy Drake",
+  "printed_name": "Dragonete da Academia",
+  "type_line": "Creature — Drake",
+  "printed_type_line": "Criatura — Dragonete",
+  "oracle_text": "Kicker {4} (You may pay an additional {4} as you cast this spell.)\nFlying\nIf this creature was kicked, it enters with two +1/+1 counters on it.",
+  "printed_text": "Reforçar {4} (Você pode pagar um custo adicional de {4} ao conjurar esta mágica.)\nVoar\nSe Dragonete da Academia foi reforçado, ele entra no campo de batalha com dois marcadores +1/+1.",
+  "mana_cost": "{2}{U}",
+  "colors": [
+    "U"
+  ],
+  "rarity": "common",
+  "set": "dom",
+  "set_name": "Dominaria",
+  "collector_number": "40",
+  "artist": "Svetlin Velinov",
+  "released_at": "2018-04-27",
+  "image_uris": {
+    "normal": "https://cards.scryfall.io/normal/front/0/6/06c71eb8-2aff-41c1-9b5a-695099e7855e.jpg?1782933734"
+  },
+  "prices": {
+    "usd": null,
+    "eur": null
+  }
+}
