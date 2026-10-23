@@ -14,17 +14,11 @@ import { PrismaService } from '../prisma/prisma.service.js';
 import { WalletService } from '../wallet/wallet.service.js';
 import { CreateLotDto } from './dto/create-lot.dto.js';
 import { ShowcasePhase, ShowcaseQueryDto } from './dto/showcase-query.dto.js';
+import { lotNotFound } from './lot.errors.js';
 import { lotPhase, standing } from './lot.rules.js';
 import { lotInclude, toLotView } from './lot.view.js';
 
 const MIN_DURATION_MS = 60_000;
-
-export const lotNotFound = () =>
-  new AppException(
-    ErrorCode.LOT_NOT_FOUND,
-    HttpStatus.NOT_FOUND,
-    'Lot not found',
-  );
 
 @Injectable()
 export class LotsService {
