@@ -1,0 +1,736 @@
+[
+  {
+    "card": {
+      "id": "50392b33-7355-480c-92b2-64fe07485388",
+      "oracle_id": "711eea87-0fa3-46e0-a42b-fa5a86455f04",
+      "lang": "pt",
+      "name": "Shivan Dragon",
+      "printed_name": "Dragão de Shiv",
+      "type_line": "Creature — Dragon",
+      "printed_type_line": "Criatura — Dragão",
+      "oracle_text": "Flying\n{R}: This creature gets +1/+0 until end of turn.",
+      "printed_text": "Voar\n{R}: Dragão de Shiv recebe +1/+0 até o final do turno.",
+      "flavor_text": "O senhor inquestionável das montanhas de Shiv.",
+      "mana_cost": "{4}{R}{R}",
+      "colors": [
+        "R"
+      ],
+      "rarity": "rare",
+      "set": "dmr",
+      "set_name": "Dominaria Remastered",
+      "collector_number": "135",
+      "artist": "Donato Giancola",
+      "released_at": "2023-01-13",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/5/0/50392b33-7355-480c-92b2-64fe07485388.jpg?1782832768"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "b8c5e74c-96e7-4a1f-93b7-14d776fe4b2d",
+      "oracle_id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+      "lang": "en",
+      "name": "Serra Angel",
+      "type_line": "Creature — Angel",
+      "oracle_text": "Flying\nVigilance (Attacking doesn't cause this creature to tap.)",
+      "flavor_text": "Follow the light. In its absence, follow her.",
+      "mana_cost": "{3}{W}{W}",
+      "colors": [
+        "W"
+      ],
+      "rarity": "uncommon",
+      "set": "fdn",
+      "set_name": "Foundations",
+      "collector_number": "740",
+      "artist": "Greg Staples",
+      "released_at": "2026-04-24",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/b/8/b8c5e74c-96e7-4a1f-93b7-14d776fe4b2d.jpg?1787563091"
+      },
+      "prices": {
+        "usd": "0.26",
+        "eur": "0.59"
+      }
+    },
+    "translation": {
+      "id": "d671839c-27d3-45a9-8e7b-9d2c8ae43a22",
+      "oracle_id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+      "lang": "pt",
+      "name": "Serra Angel",
+      "printed_name": "Anjo de Serra",
+      "type_line": "Creature — Angel",
+      "printed_type_line": "Criatura — Anjo",
+      "oracle_text": "Flying\nVigilance (Attacking doesn't cause this creature to tap.)",
+      "printed_text": "Voar, vigilância",
+      "flavor_text": "O anjo recorda suas vidas passadas como sonhos. Seu canto sustentou colinas. Sua lâmina rechaçou as trevas. Suas asas o levaram pelas eras.",
+      "mana_cost": "{3}{W}{W}",
+      "colors": [
+        "W"
+      ],
+      "rarity": "uncommon",
+      "set": "dmr",
+      "set_name": "Dominaria Remastered",
+      "collector_number": "25",
+      "artist": "Donato Giancola",
+      "released_at": "2023-01-13",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/d/6/d671839c-27d3-45a9-8e7b-9d2c8ae43a22.jpg?1782833296"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "3e055d35-9a1a-4c05-9736-1d2aed2098ef",
+      "oracle_id": "4457ed35-7c10-48c8-9776-456485fdf070",
+      "lang": "pt",
+      "name": "Lightning Bolt",
+      "printed_name": "Raio",
+      "type_line": "Instant",
+      "printed_type_line": "Mágica Instantânea",
+      "oracle_text": "Lightning Bolt deals 3 damage to any target.",
+      "printed_text": "Raio causa 3 pontos de dano a qualquer alvo.",
+      "flavor_text": "\"Ela não sabe bater na porta, não?!\"\n— Snerd, guarda do Punho Flamejante",
+      "mana_cost": "{R}",
+      "colors": [
+        "R"
+      ],
+      "rarity": "common",
+      "set": "clb",
+      "set_name": "Commander Legends: Battle for Baldur's Gate",
+      "collector_number": "187",
+      "artist": "Irina Nordsol",
+      "released_at": "2022-06-10",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/3/e/3e055d35-9a1a-4c05-9736-1d2aed2098ef.jpg?1782852503"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
+      "oracle_id": "cc187110-1148-4090-bbb8-e205694a39f5",
+      "lang": "en",
+      "name": "Counterspell",
+      "type_line": "Instant",
+      "oracle_text": "Counter target spell.",
+      "mana_cost": "{U}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "uncommon",
+      "set": "dsc",
+      "set_name": "Duskmourn: House of Horror Commander",
+      "collector_number": "114",
+      "artist": "Zack Stella",
+      "released_at": "2024-09-27",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/4/f/4f616706-ec97-4923-bb1e-11a69fbaa1f8.jpg?1783909630"
+      },
+      "prices": {
+        "usd": "4.32",
+        "eur": "4.00"
+      }
+    },
+    "translation": {
+      "id": "3ccc9abf-966f-4752-9d2c-793414d62994",
+      "oracle_id": "cc187110-1148-4090-bbb8-e205694a39f5",
+      "lang": "pt",
+      "name": "Counterspell",
+      "printed_name": "Contramágica",
+      "type_line": "Instant",
+      "printed_type_line": "Mágica Instantânea",
+      "oracle_text": "Counter target spell.",
+      "printed_text": "Anule a mágica alvo.",
+      "flavor_text": "A piromante invocou sua mais poderosa ofensiva de fogo e fúria. Jace fingiu se interessar.",
+      "mana_cost": "{U}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "common",
+      "set": "cmm",
+      "set_name": "Commander Masters",
+      "collector_number": "81",
+      "artist": "Jason Chan",
+      "released_at": "2023-08-04",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/3/c/3ccc9abf-966f-4752-9d2c-793414d62994.jpg?1782818099"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "c0a37e72-e519-463e-8837-d883d66c12c6",
+      "oracle_id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+      "lang": "pt",
+      "name": "Llanowar Elves",
+      "printed_name": "Elfos de Llanowar",
+      "type_line": "Creature — Elf Druid",
+      "printed_type_line": "Criatura — Elfo Druida",
+      "oracle_text": "{T}: Add {G}.",
+      "printed_text": "{T}: Adicione {G}.",
+      "flavor_text": "Pacientes e generosos como a vida, severos e impiedosos como a natureza.",
+      "mana_cost": "{G}",
+      "colors": [
+        "G"
+      ],
+      "rarity": "common",
+      "set": "m19",
+      "set_name": "Core Set 2019",
+      "collector_number": "314",
+      "artist": "Chris Rahn",
+      "released_at": "2018-07-13",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/c/0/c0a37e72-e519-463e-8837-d883d66c12c6.jpg?1782929242"
+      },
+      "prices": {
+        "usd": null,
+        "eur": "0.18"
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+      "oracle_id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+      "lang": "en",
+      "name": "Birds of Paradise",
+      "type_line": "Creature — Bird",
+      "oracle_text": "Flying\n{T}: Add one mana of any color.",
+      "flavor_text": "The migration of the cranes is believed to be a portent of coming abundance in Wakanda.",
+      "mana_cost": "{G}",
+      "colors": [
+        "G"
+      ],
+      "rarity": "rare",
+      "set": "msc",
+      "set_name": "Marvel Super Heroes Commander",
+      "collector_number": "170",
+      "artist": "Kevin Sidharta",
+      "released_at": "2026-06-26",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/4/9/492c2f9a-51e7-4e0f-9899-23bf43ea988b.jpg?1783903230"
+      },
+      "prices": {
+        "usd": "7.76",
+        "eur": "8.22"
+      }
+    },
+    "translation": {
+      "id": "f195fbee-4f55-4691-bf25-4fd9c50ab2f0",
+      "oracle_id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+      "lang": "pt",
+      "name": "Birds of Paradise",
+      "printed_name": "Aves do Paraíso",
+      "type_line": "Creature — Bird",
+      "printed_type_line": "Criatura — Ave",
+      "oracle_text": "Flying\n{T}: Add one mana of any color.",
+      "printed_text": "Voar\n{T}: Adicione um mana de qualquer cor.",
+      "flavor_text": "Há muito tempo, os pássaros do paraíso enchiam os céus. Graças à expansão da cidade, a maioria virou animal de estimação da alta sociedade.",
+      "mana_cost": "{G}",
+      "colors": [
+        "G"
+      ],
+      "rarity": "rare",
+      "set": "rvr",
+      "set_name": "Ravnica Remastered",
+      "collector_number": "133",
+      "artist": "Marcelo Vignali",
+      "released_at": "2024-01-12",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/f/1/f195fbee-4f55-4691-bf25-4fd9c50ab2f0.jpg?1782805879"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "48c320cf-2c79-4665-b817-66e00eee2c41",
+      "oracle_id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+      "lang": "pt",
+      "name": "Wrath of God",
+      "printed_name": "Cólera de Deus",
+      "type_line": "Sorcery",
+      "printed_type_line": "Feitiço",
+      "oracle_text": "Destroy all creatures. They can't be regenerated.",
+      "printed_text": "Destrua todas as criaturas. Elas não podem ser regeneradas.",
+      "flavor_text": "As lendas contam a história da pólis litorânea perdida de Olantin, onde a arrogância de seus habitantes enfureceu o deus do sol Heliode.",
+      "mana_cost": "{2}{W}{W}",
+      "colors": [
+        "W"
+      ],
+      "rarity": "rare",
+      "set": "cmm",
+      "set_name": "Commander Masters",
+      "collector_number": "70",
+      "artist": "Willian Murai",
+      "released_at": "2023-08-04",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/4/8/48c320cf-2c79-4665-b817-66e00eee2c41.jpg?1782818148"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
+      "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+      "lang": "en",
+      "name": "Sol Ring",
+      "type_line": "Artifact",
+      "oracle_text": "{T}: Add {C}{C}.",
+      "flavor_text": "Jace could see the sunlight in his Multiverse, but somewhere along the way, he lost the feel of its warmth.",
+      "mana_cost": "{1}",
+      "colors": [],
+      "rarity": "uncommon",
+      "set": "frc",
+      "set_name": "Reality Fracture Commander",
+      "collector_number": "21",
+      "artist": "Titus Lunter",
+      "released_at": "2026-10-02",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/8/e/8ee443cc-e17a-493b-9c93-1f9e141a30e4.jpg?1789644446"
+      },
+      "prices": {
+        "usd": "2.17",
+        "eur": "1.12"
+      }
+    },
+    "translation": {
+      "id": "c0fb3d2e-f2a0-416a-a2e3-52b19d6879a5",
+      "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+      "lang": "pt",
+      "name": "Sol Ring",
+      "printed_name": "Anel Solar",
+      "type_line": "Artifact",
+      "printed_type_line": "Artefato",
+      "oracle_text": "{T}: Add {C}{C}.",
+      "printed_text": "{T}: Adicione {C}{C}.",
+      "flavor_text": "Perdeu-se no tempo a antiga arte dos artífices de capturar a luz de uma estrela distante em um anel do mais puro ouro.",
+      "mana_cost": "{1}",
+      "colors": [],
+      "rarity": "uncommon",
+      "set": "lcc",
+      "set_name": "The Lost Caverns of Ixalan Commander",
+      "collector_number": "313",
+      "artist": "Mike Bierek",
+      "released_at": "2023-11-17",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/c/0/c0fb3d2e-f2a0-416a-a2e3-52b19d6879a5.jpg?1782809547"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "122ea88a-01e4-47b7-82f6-ab6f3fa2c8c0",
+      "oracle_id": "53f7c868-b03e-4fc2-8dcf-a75bbfa3272b",
+      "lang": "pt",
+      "name": "Dark Ritual",
+      "printed_name": "Ritual Sombrio",
+      "type_line": "Instant",
+      "printed_type_line": "Mágica Instantânea",
+      "oracle_text": "Add {B}{B}{B}.",
+      "printed_text": "Adicione {B}{B}{B}.",
+      "flavor_text": "\"Eles não confiam em meus métodos, mas quando querem resultados, quem você acha que procuram?\"\n— *Encantamentos de Lim-Dûl*",
+      "mana_cost": "{B}",
+      "colors": [
+        "B"
+      ],
+      "rarity": "rare",
+      "set": "sta",
+      "set_name": "Strixhaven Mystical Archive",
+      "collector_number": "26",
+      "artist": "Robbie Trevino",
+      "released_at": "2021-04-23",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/1/2/122ea88a-01e4-47b7-82f6-ab6f3fa2c8c0.jpg?1782885302"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "b281a308-ab6b-47b6-bec7-632c9aaecede",
+      "oracle_id": "edd8d1e8-be43-4c38-bb3a-83081fbaf0b5",
+      "lang": "en",
+      "name": "Thoughtseize",
+      "type_line": "Sorcery",
+      "oracle_text": "Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
+      "flavor_text": "\"Any dream is a robust harvest. Still, I prefer the timeworn dreams, heavy with import, that haunt the obsessive mind.\"",
+      "mana_cost": "{B}",
+      "colors": [
+        "B"
+      ],
+      "rarity": "rare",
+      "set": "2xm",
+      "set_name": "Double Masters",
+      "collector_number": "109",
+      "artist": "Aleksi Briclot",
+      "released_at": "2020-08-07",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/b/2/b281a308-ab6b-47b6-bec7-632c9aaecede.jpg?1783930173"
+      },
+      "prices": {
+        "usd": "7.82",
+        "eur": "8.38"
+      }
+    },
+    "translation": {
+      "id": "92a92b64-4b10-4caf-b53a-b241dfa25936",
+      "oracle_id": "edd8d1e8-be43-4c38-bb3a-83081fbaf0b5",
+      "lang": "pt",
+      "name": "Thoughtseize",
+      "printed_name": "Capturar Pensamento",
+      "type_line": "Sorcery",
+      "printed_type_line": "Feitiço",
+      "oracle_text": "Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
+      "printed_text": "O jogador alvo revela a própria mão. Você escolhe um card não de terreno da mão dele. Aquele jogador descarta aquele card. Você perde 2 pontos de vida.",
+      "flavor_text": "Billy, não se esqueça de incluir o título da manchete antes de mandar para a prensa mais uma vez. — Clara",
+      "mana_cost": "{B}",
+      "colors": [
+        "B"
+      ],
+      "rarity": "mythic",
+      "set": "otp",
+      "set_name": "Breaking News",
+      "collector_number": "20",
+      "artist": "William Tempest",
+      "released_at": "2024-04-19",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/9/2/92a92b64-4b10-4caf-b53a-b241dfa25936.jpg?1782795598"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "8be5ee47-8f8a-4e3c-b1a1-9ca0e1fdec7f",
+      "oracle_id": "45900b2f-f6a9-4c42-9642-008f3c1cf6dd",
+      "lang": "en",
+      "name": "Tarmogoyf",
+      "type_line": "Creature — Lhurgoyf",
+      "oracle_text": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+      "flavor_text": "What doesn't adapt, dies. And what dies feeds the tarmogoyf.",
+      "mana_cost": "{1}{G}",
+      "colors": [
+        "G"
+      ],
+      "rarity": "mythic",
+      "set": "fra",
+      "set_name": "Reality Fracture",
+      "collector_number": "116",
+      "artist": "Lucas Graciano",
+      "released_at": "2026-10-02",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/8/b/8be5ee47-8f8a-4e3c-b1a1-9ca0e1fdec7f.jpg?1789127270"
+      },
+      "prices": {
+        "usd": "1.11",
+        "eur": "2.16"
+      }
+    },
+    "translation": {
+      "id": "bb3f0bdd-f9a3-4ee8-9dff-f0f71a2da6c9",
+      "oracle_id": "45900b2f-f6a9-4c42-9642-008f3c1cf6dd",
+      "lang": "pt",
+      "name": "Tarmogoyf",
+      "printed_name": "Tarmogoyf",
+      "type_line": "Creature — Lhurgoyf",
+      "printed_type_line": "Criatura — Lhurgoyf",
+      "oracle_text": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+      "printed_text": "O poder de Tarmogoyf é igual ao número de tipos de card dentre os cards em todos os cemitérios, e sua resistência é igual àquele número mais 1.",
+      "flavor_text": "O que não cresce morre. E o que morre faz crescer o tarmogoyf.",
+      "mana_cost": "{1}{G}",
+      "colors": [
+        "G"
+      ],
+      "rarity": "mythic",
+      "set": "tsr",
+      "set_name": "Time Spiral Remastered",
+      "collector_number": "235",
+      "artist": "Justin Murray",
+      "released_at": "2021-03-19",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/b/b/bb3f0bdd-f9a3-4ee8-9dff-f0f71a2da6c9.jpg?1782889612"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "5b488556-fd26-4fd9-be71-e067b619eba4",
+      "oracle_id": "2bb2eda7-3b38-4c56-870f-c3218a1056f5",
+      "lang": "pt",
+      "name": "Snapcaster Mage",
+      "printed_name": "Mago da Conjuração-relâmpago",
+      "type_line": "Creature — Human Wizard",
+      "printed_type_line": "Criatura — Humano Mago",
+      "oracle_text": "Flash\nWhen this creature enters, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)",
+      "printed_text": "Lampejo\nQuando Mago da Conjuração-relâmpago entra no campo de batalha, o card de mágica instantânea ou de feitiço alvo no seu cemitério ganha recapitular até o final do turno. O custo de recapitular é igual ao seu custo de mana. (Você pode conjurar este card de seu cemitério pagando seu custo de recapitular. Depois, exile-o.)",
+      "mana_cost": "{1}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "rare",
+      "set": "isd",
+      "set_name": "Innistrad",
+      "collector_number": "78",
+      "artist": "Volkan Baǵa",
+      "released_at": "2011-09-30",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/5/b/5b488556-fd26-4fd9-be71-e067b619eba4.jpg?1782988003"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "6904ea20-e504-47da-95a0-08739fdde260",
+      "oracle_id": "edd531b9-f615-4399-8c8c-1c5e18c4acbf",
+      "lang": "en",
+      "name": "Delver of Secrets // Insectile Aberration",
+      "type_line": "Creature — Human Wizard // Creature — Human Insect",
+      "rarity": "common",
+      "set": "inr",
+      "set_name": "Innistrad Remastered",
+      "collector_number": "60",
+      "artist": "Nils Hamm",
+      "released_at": "2025-01-24",
+      "card_faces": [
+        {
+          "name": "Delver of Secrets",
+          "type_line": "Creature — Human Wizard",
+          "oracle_text": "At the beginning of your upkeep, look at the top card of your library. You may reveal that card. If an instant or sorcery card is revealed this way, transform this creature.",
+          "mana_cost": "{U}",
+          "colors": [
+            "U"
+          ],
+          "image_uris": {
+            "normal": "https://cards.scryfall.io/normal/front/6/9/6904ea20-e504-47da-95a0-08739fdde260.jpg?1783908173"
+          }
+        },
+        {
+          "name": "Insectile Aberration",
+          "type_line": "Creature — Human Insect",
+          "oracle_text": "Flying",
+          "flavor_text": "\"Unfortunately, all my test animals have died or escaped, so I shall be the final subject. I feel no fear. This is a momentous night.\"\n—Laboratory notes, final entry",
+          "mana_cost": "",
+          "colors": [
+            "U"
+          ],
+          "image_uris": {
+            "normal": "https://cards.scryfall.io/normal/back/6/9/6904ea20-e504-47da-95a0-08739fdde260.jpg?1783908173"
+          }
+        }
+      ],
+      "prices": {
+        "usd": "0.32",
+        "eur": "0.55"
+      }
+    },
+    "translation": {
+      "id": "78213c71-019a-4748-9ef0-59f680a2de4b",
+      "oracle_id": "edd531b9-f615-4399-8c8c-1c5e18c4acbf",
+      "lang": "pt",
+      "name": "Delver of Secrets // Insectile Aberration",
+      "type_line": "Creature — Human Wizard // Creature — Human Insect",
+      "rarity": "uncommon",
+      "set": "mid",
+      "set_name": "Innistrad: Midnight Hunt",
+      "collector_number": "47",
+      "artist": "Matt Stewart",
+      "released_at": "2021-09-24",
+      "card_faces": [
+        {
+          "name": "Delver of Secrets",
+          "printed_name": "Delver of Secrets",
+          "type_line": "Creature — Human Wizard",
+          "printed_type_line": "Criatura — Humano Mago",
+          "oracle_text": "At the beginning of your upkeep, look at the top card of your library. You may reveal that card. If an instant or sorcery card is revealed this way, transform this creature.",
+          "printed_text": "No início de sua manutenção, olhe o card do topo de seu grimório. Você pode revelar aquele card. Se um card de mágica instantânea ou de feitiço for revelado dessa maneira, transforme Investigador de Segredos.",
+          "flavor_text": "\"Se minha hipótese estiver correta...\"",
+          "mana_cost": "{U}",
+          "colors": [
+            "U"
+          ],
+          "image_uris": {
+            "normal": "https://cards.scryfall.io/normal/front/7/8/78213c71-019a-4748-9ef0-59f680a2de4b.jpg?1782872684"
+          }
+        },
+        {
+          "name": "Insectile Aberration",
+          "printed_name": "Insectile Aberration",
+          "type_line": "Creature — Human Insect",
+          "printed_type_line": "Criatura — Humano Inseto",
+          "oracle_text": "Flying",
+          "printed_text": "Voar",
+          "flavor_text": "\"Arrá! Sim! Agora eu estou ouvindo... a linda poesia das luzes celestes. Preciso ir à lua e perguntar o significado disso tudo!\"",
+          "mana_cost": "",
+          "colors": [
+            "U"
+          ],
+          "image_uris": {
+            "normal": "https://cards.scryfall.io/normal/back/7/8/78213c71-019a-4748-9ef0-59f680a2de4b.jpg?1782872684"
+          }
+        }
+      ],
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "84d87e4e-70e9-4889-a4d9-e0638ce65dae",
+      "oracle_id": "0ba134d8-ee7d-48ec-8dc6-57942b8e9261",
+      "lang": "pt",
+      "name": "Liliana of the Veil",
+      "printed_name": "Liliana do Véu",
+      "type_line": "Legendary Planeswalker — Liliana",
+      "printed_type_line": "Planeswalker Lendário — Liliana",
+      "oracle_text": "+1: Each player discards a card.\n−2: Target player sacrifices a creature.\n−6: Separate all permanents target player controls into two piles. That player sacrifices all permanents in the pile of their choice.",
+      "printed_text": "+1: Cada jogador descarta um card.\n−2: O jogador alvo sacrifica uma criatura.\n−6: Separe todas as permanentes que o jogador alvo controla em dois montes. Aquele jogador sacrifica todas as permanentes no monte à escolha dele.",
+      "mana_cost": "{1}{B}{B}",
+      "colors": [
+        "B"
+      ],
+      "rarity": "mythic",
+      "set": "dmu",
+      "set_name": "Dominaria United",
+      "collector_number": "97",
+      "artist": "Martina Fačková",
+      "released_at": "2022-09-09",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/8/4/84d87e4e-70e9-4889-a4d9-e0638ce65dae.jpg?1782844774"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "c8817585-0d32-4d56-9142-0d29512e86a9",
+      "oracle_id": "7f77a84e-5a4b-4834-aefa-3cecc175ae8e",
+      "lang": "en",
+      "name": "Jace, the Mind Sculptor",
+      "type_line": "Legendary Planeswalker — Jace",
+      "oracle_text": "+2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.\n0: Draw three cards, then put two cards from your hand on top of your library in any order.\n−1: Return target creature to its owner's hand.\n−12: Exile all cards from target player's library, then that player shuffles their hand into their library.",
+      "mana_cost": "{2}{U}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "mythic",
+      "set": "2xm",
+      "set_name": "Double Masters",
+      "collector_number": "56",
+      "artist": "Jason Chan",
+      "released_at": "2020-08-07",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/c/8/c8817585-0d32-4d56-9142-0d29512e86a9.jpg?1783930196"
+      },
+      "prices": {
+        "usd": "22.58",
+        "eur": "15.48"
+      }
+    },
+    "translation": {
+      "id": "b0d2128a-9d36-41f1-9fc2-19d7a50e9310",
+      "oracle_id": "7f77a84e-5a4b-4834-aefa-3cecc175ae8e",
+      "lang": "pt",
+      "name": "Jace, the Mind Sculptor",
+      "printed_name": "Jace, o Escultor de Mentes",
+      "type_line": "Legendary Planeswalker — Jace",
+      "printed_type_line": "Planeswalker — Jace",
+      "oracle_text": "+2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.\n0: Draw three cards, then put two cards from your hand on top of your library in any order.\n−1: Return target creature to its owner's hand.\n−12: Exile all cards from target player's library, then that player shuffles their hand into their library.",
+      "printed_text": "+2: Olhe o card do topo do grimório do jogador alvo. Você pode colocar aquele card no fundo do grimório daquele jogador.\n0: Compre três cards, depois coloque dois cards de sua mão no topo de seu grimório em qualquer ordem.\n-1: Devolva a criatura alvo para a mão de seu dono.\n-12: Exile todos os cards do grimório do jogador alvo, depois aquele jogador embaralha sua mão no próprio grimório.",
+      "mana_cost": "{2}{U}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "mythic",
+      "set": "wwk",
+      "set_name": "Worldwake",
+      "collector_number": "31",
+      "artist": "Jason Chan",
+      "released_at": "2010-02-05",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/b/0/b0d2128a-9d36-41f1-9fc2-19d7a50e9310.jpg?1782999118"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  },
+  {
+    "card": {
+      "id": "06c71eb8-2aff-41c1-9b5a-695099e7855e",
+      "oracle_id": "65f3ebeb-1ca5-4923-b681-032579991c8a",
+      "lang": "pt",
+      "name": "Academy Drake",
+      "printed_name": "Dragonete da Academia",
+      "type_line": "Creature — Drake",
+      "printed_type_line": "Criatura — Dragonete",
+      "oracle_text": "Kicker {4} (You may pay an additional {4} as you cast this spell.)\nFlying\nIf this creature was kicked, it enters with two +1/+1 counters on it.",
+      "printed_text": "Reforçar {4} (Você pode pagar um custo adicional de {4} ao conjurar esta mágica.)\nVoar\nSe Dragonete da Academia foi reforçado, ele entra no campo de batalha com dois marcadores +1/+1.",
+      "mana_cost": "{2}{U}",
+      "colors": [
+        "U"
+      ],
+      "rarity": "common",
+      "set": "dom",
+      "set_name": "Dominaria",
+      "collector_number": "40",
+      "artist": "Svetlin Velinov",
+      "released_at": "2018-04-27",
+      "image_uris": {
+        "normal": "https://cards.scryfall.io/normal/front/0/6/06c71eb8-2aff-41c1-9b5a-695099e7855e.jpg?1782933734"
+      },
+      "prices": {
+        "usd": null,
+        "eur": null
+      }
+    }
+  }
+]
