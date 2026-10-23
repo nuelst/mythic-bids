@@ -18,6 +18,7 @@ export class Env {
   @IsUrl({ require_tld: false })
   PUBLIC_URL: string;
 
+  /** Comma-separated list of allowed origins. */
   @IsString()
   CORS_ORIGIN: string;
 
