@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: auction-api
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    region: frankfurt
+    healthCheckPath: /health
+    buildFilter:
+      paths:
+        - backend/**
+    envVars:
+      # Neon: pooled connection (-pooler) for the app, direct one for migrations.
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_DATABASE_URL
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      # Generate once with `pnpm secrets` and reuse them when seeding from your machine,
+      # otherwise the seeded bids would fail the audit.
+      - key: JWT_SECRET
+        sync: false
+      - key: ALIAS_SECRET
+        sync: false
+      - key: AUDIT_PRIVATE_KEY
+        sync: false
