@@ -4,8 +4,8 @@ import { CatalogJobType } from '../generated/prisma/client.js';
 import { errorMessage } from '../common/errors/error-message.js';
 import { LOCALES } from '../common/locale/locale.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { CatalogService } from './catalog.service.js';
 import { ScryfallClient } from './scryfall/scryfall.client.js';
-import { printedTranslation } from './scryfall/scryfall.mapper.js';
 
 const MAX_ATTEMPTS = 5;
 const RETRY_BASE_MS = 5_000;
@@ -26,6 +26,7 @@ export class CatalogJobsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly scryfall: ScryfallClient,
+    private readonly catalog: CatalogService,
   ) {}
 
   @Interval(2_000)
@@ -118,13 +119,7 @@ export class CatalogJobsService {
 
     for (const locale of missing) {
       const card = await this.scryfall.translatedCard(item, locale);
-      const translation = card && printedTranslation(card, 'SIBLING');
-      if (translation) {
-        await this.prisma.catalogItemTranslation.createMany({
-          data: { ...translation, itemId },
-          skipDuplicates: true,
-        });
-      }
+      if (card) await this.catalog.addSiblingTranslation(itemId, card);
     }
   }
 }

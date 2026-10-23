@@ -14,7 +14,11 @@ import {
 } from './catalog-item.view.js';
 import { SearchCatalogDto } from './dto/search-catalog.dto.js';
 import { ScryfallClient } from './scryfall/scryfall.client.js';
-import { toItemData, toTranslations } from './scryfall/scryfall.mapper.js';
+import {
+  printedTranslation,
+  toItemData,
+  toTranslations,
+} from './scryfall/scryfall.mapper.js';
 import { ScryfallCard } from './scryfall/scryfall.types.js';
 
 const SEARCH_TTL_MS = 10 * 60 * 1000;
@@ -102,6 +106,16 @@ export class CatalogService {
     return items.sort(
       (a, b) => order.get(a.scryfallId)! - order.get(b.scryfallId)!,
     );
+  }
+
+  /** Stores the text of another printing (in its language) as a translation of the item. */
+  async addSiblingTranslation(itemId: string, sibling: ScryfallCard) {
+    const translation = printedTranslation(sibling, 'SIBLING');
+    if (!translation) return;
+    await this.prisma.catalogItemTranslation.createMany({
+      data: { ...translation, itemId },
+      skipDuplicates: true,
+    });
   }
 
   /** Makes sure the item exists and schedules the image copy and missing translations. */
