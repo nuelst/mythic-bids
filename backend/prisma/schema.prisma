@@ -8,3 +8,16 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model IdempotencyKey {
+  userId      String   @map("user_id") @db.Uuid
+  key         String
+  fingerprint String
+  statusCode  Int?     @map("status_code")
+  response    Json?
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@id([userId, key])
+  @@index([createdAt])
+  @@map("idempotency_keys")
+}
