@@ -87,7 +87,7 @@ Os testes e2e cobrem:
 
 ### Deploy (Render + Neon)
 
-1. **Neon:** cria um projeto PostgreSQL 17 na mesma região do Render (ex.: Frankfurt, `aws-eu-central-1`) e copia as duas connection strings:
+1. **Neon:** cria um projeto PostgreSQL 17 em **AWS US East 1 (N. Virginia)**, a mesma região do serviço no Render (`virginia`). Cada lance faz várias queries numa transação, por isso a API e a BD devem estar lado a lado. Copia as duas connection strings:
    - **pooled** (host com `-pooler`), que será o `DATABASE_URL`;
    - **direct**, que será o `DIRECT_DATABASE_URL`, usado pelas migrations.
 2. **Segredos:** gera-os uma única vez com `pnpm secrets`.

@@ -5,7 +5,7 @@ services:
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
     plan: free
-    region: frankfurt
+    region: virginia
     healthCheckPath: /health
     buildFilter:
       paths:
