@@ -2,6 +2,7 @@ import { m } from '#/paraglide/messages'
 import { getLocale } from '#/paraglide/runtime'
 import { cn } from '#/shared/lib/cn'
 import { CardImage } from '#/shared/ui/card-image'
+import { Pagination } from '#/shared/ui/pagination'
 import { RarityBadge } from '#/shared/ui/rarity-badge'
 import { Skeleton } from '#/shared/ui/skeleton'
 import type { CatalogItem, CatalogSearch } from '../api/seller-api'
@@ -18,12 +19,22 @@ function formatReference(item: CatalogItem) {
 
 export function CatalogResults({
   data,
+  items,
   fetching,
+  page,
+  pageSize,
+  total,
+  onPageChange,
   selectedId,
   onSelect,
 }: {
   data?: CatalogSearch
+  items: CatalogItem[]
   fetching: boolean
+  page: number
+  pageSize: number
+  total: number
+  onPageChange: (page: number) => void
   selectedId?: string
   onSelect: (item: CatalogItem) => void
 }) {
@@ -46,45 +57,53 @@ export function CatalogResults({
   }
 
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
-      {data.items.map((item) => {
-        const selected = item.id === selectedId
-        const reference = formatReference(item)
-        return (
-          <li key={item.id}>
-            <button
-              type="button"
-              onClick={() => onSelect(item)}
-              className={cn(
-                'flex w-full gap-3 rounded-lg border p-3 text-left transition-colors',
-                selected
-                  ? 'border-primary bg-primary-soft'
-                  : 'hover:border-border-strong hover:bg-muted',
-              )}
-            >
-              <CardImage
-                src={item.imageUrl}
-                alt={item.name}
-                className="w-16 shrink-0"
-              />
-              <span className="grid min-w-0 gap-1">
-                <span className="font-display font-semibold">{item.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  {item.setName} · {item.collectorNumber} · {item.lang}
+    <div className="grid gap-4">
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {items.map((item) => {
+          const selected = item.id === selectedId
+          const reference = formatReference(item)
+          return (
+            <li key={item.id}>
+              <button
+                type="button"
+                onClick={() => onSelect(item)}
+                className={cn(
+                  'group flex w-full gap-3 rounded-lg border p-3 text-left transition-colors',
+                  selected
+                    ? 'border-primary bg-primary-soft'
+                    : 'hover:border-border-strong hover:bg-muted',
+                )}
+              >
+                <CardImage
+                  src={item.imageUrl}
+                  alt={item.name}
+                  className="w-16 shrink-0"
+                />
+                <span className="grid min-w-0 gap-1">
+                  <span className="font-display font-semibold">{item.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {item.setName} · {item.collectorNumber} · {item.lang}
+                  </span>
+                  <span className="flex flex-wrap items-center gap-2">
+                    <RarityBadge rarity={item.rarity} />
+                    {reference && (
+                      <span className="text-xs text-muted-foreground">
+                        {m.seller_reference({ price: reference })}
+                      </span>
+                    )}
+                  </span>
                 </span>
-                <span className="flex flex-wrap items-center gap-2">
-                  <RarityBadge rarity={item.rarity} />
-                  {reference && (
-                    <span className="text-xs text-muted-foreground">
-                      {m.seller_reference({ price: reference })}
-                    </span>
-                  )}
-                </span>
-              </span>
-            </button>
-          </li>
-        )
-      })}
-    </ul>
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+      <Pagination
+        page={page}
+        pageSize={pageSize}
+        total={total}
+        onPageChange={onPageChange}
+      />
+    </div>
   )
 }

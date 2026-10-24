@@ -1,32 +1,35 @@
+import { fromDateTimeLocal } from '#/shared/lib/datetime'
+
 export const MIN_LOT_DURATION_MS = 60_000
 export const MAX_LOT_HORIZON_MS = 90 * 24 * 60 * 60_000
 
-const pad = (value: number) => String(value).padStart(2, '0')
-
-/** Value for `datetime-local` from a Date, in the user's timezone. */
-export function toDateTimeLocal(value: Date) {
-  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}T${pad(value.getHours())}:${pad(value.getMinutes())}`
-}
-
-export function fromDateTimeLocal(value: string) {
-  if (!value) return null
-  const date = new Date(value)
-  return Number.isNaN(date.getTime()) ? null : date
-}
+export { fromDateTimeLocal, toDateTimeLocal } from '#/shared/lib/datetime'
 
 export function defaultLotEndsAt(now = new Date()) {
   return new Date(now.getTime() + 24 * 60 * 60_000)
 }
 
+export type ScheduleError =
+  | 'short'
+  | 'far'
+  | 'past_start'
+  | 'past_end'
+  | 'before_start'
+
 export function scheduleError(
   startsAt: string | undefined,
   endsAt: string,
   now = new Date(),
-): 'short' | 'far' | null {
-  const start = fromDateTimeLocal(startsAt ?? '') ?? now
-  const effectiveStart = start > now ? start : now
+): ScheduleError | null {
+  const start = fromDateTimeLocal(startsAt ?? '')
   const end = fromDateTimeLocal(endsAt)
   if (!end) return 'short'
+  if (start && start.getTime() < now.getTime() - MIN_LOT_DURATION_MS) {
+    return 'past_start'
+  }
+  if (end.getTime() < now.getTime()) return 'past_end'
+  if (start && end.getTime() <= start.getTime()) return 'before_start'
+  const effectiveStart = start && start > now ? start : now
   if (end.getTime() - effectiveStart.getTime() < MIN_LOT_DURATION_MS) {
     return 'short'
   }

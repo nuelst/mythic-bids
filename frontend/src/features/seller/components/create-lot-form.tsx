@@ -1,5 +1,6 @@
 import { Controller } from 'react-hook-form'
 import { m } from '#/paraglide/messages'
+import { fromDateTimeLocal } from '#/shared/lib/datetime'
 import { Button } from '#/shared/ui/button'
 import { DateTimeInput } from '#/shared/ui/date-time-input'
 import { Field } from '#/shared/ui/field'
@@ -11,10 +12,14 @@ export function CreateLotForm({ itemId }: { itemId?: string }) {
   const {
     form: {
       control,
-      register,
+      watch,
       formState: { errors },
     },
   } = create
+  const now = new Date()
+  const startDate = fromDateTimeLocal(watch('startsAt') ?? '')
+  const endMin =
+    startDate && startDate.getTime() > now.getTime() ? startDate : now
 
   return (
     <form className="grid gap-4" onSubmit={create.onSubmit} noValidate>
@@ -52,21 +57,45 @@ export function CreateLotForm({ itemId }: { itemId?: string }) {
           </Field>
         )}
       />
-      <Field
-        id="startsAt"
-        label={m.seller_starts_at()}
-        description={m.seller_starts_at_hint()}
-        error={errors.startsAt?.message}
-      >
-        <DateTimeInput {...register('startsAt')} />
-      </Field>
-      <Field
-        id="endsAt"
-        label={m.seller_ends_at()}
-        error={errors.endsAt?.message}
-      >
-        <DateTimeInput {...register('endsAt')} />
-      </Field>
+      <Controller
+        name="startsAt"
+        control={control}
+        render={({ field }) => (
+          <Field
+            id="startsAt"
+            label={m.seller_starts_at()}
+            description={m.seller_starts_at_hint()}
+            error={errors.startsAt?.message}
+          >
+            <DateTimeInput
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              minDate={now}
+              allowEmpty
+              placeholder={m.datetime_pick()}
+            />
+          </Field>
+        )}
+      />
+      <Controller
+        name="endsAt"
+        control={control}
+        render={({ field }) => (
+          <Field
+            id="endsAt"
+            label={m.seller_ends_at()}
+            error={errors.endsAt?.message}
+          >
+            <DateTimeInput
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              minDate={endMin}
+            />
+          </Field>
+        )}
+      />
       {errors.itemId && (
         <p role="alert" className="text-sm font-medium text-danger">
           {errors.itemId.message}

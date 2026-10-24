@@ -1,5 +1,18 @@
 import { intlLocale } from './intl-locale'
 
+const pad = (value: number) => String(value).padStart(2, '0')
+
+/** Value for `datetime-local` from a Date, in the user's timezone. */
+export function toDateTimeLocal(value: Date) {
+  return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}T${pad(value.getHours())}:${pad(value.getMinutes())}`
+}
+
+export function fromDateTimeLocal(value: string) {
+  if (!value) return null
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
 type DateInput = Date | string | number
 
 function asDate(value: DateInput) {
@@ -59,7 +72,6 @@ export function formatCountdown(ms: number) {
   const hours = Math.floor(total / 3600)
   const minutes = Math.floor((total % 3600) / 60)
   const seconds = total % 60
-  const pad = (n: number) => String(n).padStart(2, '0')
   return hours > 0
     ? `${hours}:${pad(minutes)}:${pad(seconds)}`
     : `${pad(minutes)}:${pad(seconds)}`

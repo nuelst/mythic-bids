@@ -1,6 +1,6 @@
-import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { m } from '#/paraglide/messages'
+import { BackLink } from '#/shared/ui/back-link'
 import { Card, CardContent, CardHeader, CardTitle } from '#/shared/ui/card'
 import { CatalogResults } from '../components/catalog-results'
 import { CatalogSearch } from '../components/catalog-search'
@@ -15,13 +15,7 @@ export function NewLotPage() {
   return (
     <main className="container-page grid gap-8 py-10">
       <div className="grid gap-2">
-        <Link
-          to="/seller"
-          search={{}}
-          className="text-sm text-muted-foreground hover:text-foreground"
-        >
-          ← {m.seller_back()}
-        </Link>
+        <BackLink to="/seller" label={m.seller_back()} />
         <h1 className="font-display text-4xl font-bold">{m.seller_new()}</h1>
         <p className="text-muted-foreground">{m.seller_new_description()}</p>
       </div>
@@ -42,7 +36,12 @@ export function NewLotPage() {
           )}
           <CatalogResults
             data={search.data}
+            items={search.items}
             fetching={search.isFetching}
+            page={search.page}
+            pageSize={search.pageSize}
+            total={search.total}
+            onPageChange={search.setPage}
             selectedId={item?.id}
             onSelect={setItem}
           />

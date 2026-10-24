@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { m } from '#/paraglide/messages'
+import type { ScheduleError } from './schedule'
 import { scheduleError } from './schedule'
 
 export const MAX_AMOUNT_CENTS = 100_000_000
@@ -9,6 +10,14 @@ const amount = z
   .int()
   .positive(m.validation_amount())
   .max(MAX_AMOUNT_CENTS, m.validation_amount_max())
+
+function scheduleMessage(error: ScheduleError) {
+  if (error === 'far') return m.seller_schedule_far()
+  if (error === 'past_start') return m.seller_schedule_past_start()
+  if (error === 'past_end') return m.seller_schedule_past_end()
+  if (error === 'before_start') return m.seller_schedule_before_start()
+  return m.seller_schedule_short()
+}
 
 export const createLotSchema = z
   .object({
@@ -23,9 +32,8 @@ export const createLotSchema = z
     if (!error) return
     ctx.addIssue({
       code: 'custom',
-      path: ['endsAt'],
-      message:
-        error === 'far' ? m.seller_schedule_far() : m.seller_schedule_short(),
+      path: [error === 'past_start' ? 'startsAt' : 'endsAt'],
+      message: scheduleMessage(error),
     })
   })
 
