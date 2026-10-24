@@ -1,13 +1,16 @@
 import {
   HeadContent,
+  Outlet,
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Devtools } from '#/app/devtools'
+import { AppHeader } from '#/app/header'
 import { Providers } from '#/app/providers'
 import { getLocale } from '#/paraglide/runtime'
+import { SessionBridge } from '#/shared/auth/session-bridge'
 import { themeScript } from '#/shared/theme/theme'
 import appCss from '#/styles/app.css?url'
 
@@ -26,7 +29,18 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     scripts: [{ children: themeScript }],
   }),
   shellComponent: RootDocument,
+  component: RootLayout,
 })
+
+function RootLayout() {
+  return (
+    <>
+      <SessionBridge />
+      <AppHeader />
+      <Outlet />
+    </>
+  )
+}
 
 function RootDocument({ children }: { children: ReactNode }) {
   return (
