@@ -1,6 +1,6 @@
 # Uso de IA
 
-O enunciado pede para dizer onde e como a IA foi usada. Usei um assistente de programação no Cursor (Claude) no backend e no frontend. A responsabilidade pelo resultado é minha.
+O enunciado pede para dizer onde e como a IA foi usada. Usei um assistente de programação no backend e no frontend. A responsabilidade pelo resultado é minha.
 
 A arquitetura, a identidade visual, os detalhes de UI/UX e os testes manuais foram definidos e validados por mim. A IA serviu de par para acelerar a codificação.
 

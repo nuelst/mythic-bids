@@ -269,4 +269,4 @@ Os eventos são gravados numa **outbox** na mesma transação da alteração, po
 
 ## Uso de IA
 
-Usei um assistente de programação (Cursor / Claude) para escrever a maior parte do código, sob a arquitetura e as regras que eu defini. O que foi revisto, o que a IA errou e o que eu ajustei está em [USO-DE-IA.md](../USO-DE-IA.md).
+Usei um assistente de programação no backend e no frontend. A arquitetura e as regras foram definidas por mim; a IA acelerou a codificação. O detalhe está em [USO-DE-IA.md](../USO-DE-IA.md).
