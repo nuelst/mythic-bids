@@ -6,6 +6,7 @@ import { formatDateTime } from '#/shared/lib/datetime'
 import { Alias } from '#/shared/ui/alias'
 import { Badge } from '#/shared/ui/badge'
 import { Button, buttonVariants } from '#/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '#/shared/ui/card'
 import { CardImage } from '#/shared/ui/card-image'
 import { CopyButton } from '#/shared/ui/copy-button'
 import { EmptyState } from '#/shared/ui/empty-state'
@@ -13,6 +14,9 @@ import { Price } from '#/shared/ui/price'
 import { RarityBadge } from '#/shared/ui/rarity-badge'
 import { Skeleton } from '#/shared/ui/skeleton'
 import { shortHash } from '../api/receipt-view'
+import { AuditStatus } from '../components/audit-status'
+import { HashChain } from '../components/hash-chain'
+import { PublicKeyCard } from '../components/public-key-card'
 import { ReceiptSeal } from '../components/receipt-seal'
 import { useReceipt } from '../view-models/use-receipt'
 
@@ -151,6 +155,34 @@ export function ReceiptPage({ token }: { token: string }) {
               </Link>
             </div>
           </div>
+
+          <section className="grid gap-4">
+            <h2 className="font-display text-2xl font-semibold">
+              {m.audit_title()}
+            </h2>
+            {state.auditError ? (
+              <p className="text-sm text-danger">{m.audit_error()}</p>
+            ) : state.audit ? (
+              <AuditStatus report={state.audit} />
+            ) : (
+              <Skeleton className="h-24 w-full" />
+            )}
+          </section>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>{m.audit_chain()}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {state.audit ? (
+                <HashChain report={state.audit} />
+              ) : (
+                <Skeleton className="h-40 w-full" />
+              )}
+            </CardContent>
+          </Card>
+
+          <PublicKeyCard pem={state.publicKey} />
         </>
       )}
     </main>
