@@ -1,6 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "app_name": "Mythic Bids",
+  "app_description": "Leilões de Magic: The Gathering com comprovante público e auditoria à prova de adulteração.",
+  "skip_to_content": "Saltar para o conteúdo",
+  "nav_label": "Principal",
+  "nav_menu": "Abrir o menu",
+  "loading": "A carregar…",
+  "not_found_title": "Página não encontrada",
+  "not_found_hint": "Este endereço não existe. Volta à vitrine para continuar.",
   "pagination_label": "Paginação",
   "pagination_previous": "Anterior",
   "pagination_next": "Próxima",

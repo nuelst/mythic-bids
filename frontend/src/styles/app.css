@@ -132,16 +132,26 @@
   --radius-lg: 14px;
   --radius-xl: 20px;
 
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 1px 1px hsl(var(--shadow-color) / 0.04);
-  --shadow-md: 0 4px 12px hsl(var(--shadow-color) / 0.08), 0 1px 3px hsl(var(--shadow-color) / 0.06);
-  --shadow-lg: 0 16px 40px hsl(var(--shadow-color) / 0.14), 0 4px 12px hsl(var(--shadow-color) / 0.08);
+  --shadow-sm:
+    0 1px 2px hsl(var(--shadow-color) / 0.06),
+    0 1px 1px hsl(var(--shadow-color) / 0.04);
+  --shadow-md:
+    0 4px 12px hsl(var(--shadow-color) / 0.08),
+    0 1px 3px hsl(var(--shadow-color) / 0.06);
+  --shadow-lg:
+    0 16px 40px hsl(var(--shadow-color) / 0.14),
+    0 4px 12px hsl(var(--shadow-color) / 0.08);
 
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   --animate-price-pulse: price-pulse 700ms var(--ease-out);
   @keyframes price-pulse {
-    0% { background-color: var(--primary-soft); }
-    100% { background-color: transparent; }
+    0% {
+      background-color: var(--primary-soft);
+    }
+    100% {
+      background-color: transparent;
+    }
   }
 }
 
@@ -220,4 +230,23 @@
 
 @utility tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* Visible only when focused, so keyboard users can jump the header. */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 80;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
 }

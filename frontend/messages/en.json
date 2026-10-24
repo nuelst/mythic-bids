@@ -1,6 +1,13 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "app_name": "Mythic Bids",
+  "app_description": "Magic: The Gathering auctions with a public receipt and a tamper-evident audit trail.",
+  "skip_to_content": "Skip to content",
+  "nav_label": "Main",
+  "nav_menu": "Open menu",
+  "loading": "Loading…",
+  "not_found_title": "Page not found",
+  "not_found_hint": "This address does not exist. Go back to the showcase to continue.",
   "pagination_label": "Pagination",
   "pagination_previous": "Previous",
   "pagination_next": "Next",
