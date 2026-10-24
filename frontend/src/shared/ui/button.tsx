@@ -6,9 +6,12 @@ import type { ComponentProps } from 'react'
 import { cn } from '#/shared/lib/cn'
 
 const buttonVariants = cva(
-  'inline-flex shrink-0 select-none items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-colors duration-150 ease-out outline-none ' +
-    'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ' +
-    'disabled:opacity-50 aria-busy:cursor-progress [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4',
+  'inline-flex shrink-0 select-none items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap outline-none ' +
+    'transition-[color,background-color,box-shadow,transform] duration-150 ease-out ' +
+    'motion-safe:active:scale-[1.04] motion-safe:active:shadow-md ' +
+    'disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100 ' +
+    'focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ' +
+    'aria-busy:cursor-progress [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4',
   {
     variants: {
       variant: {
