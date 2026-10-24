@@ -57,4 +57,26 @@ describe('api client', () => {
     expect(onUnauthorized).toHaveBeenCalledOnce()
     unsubscribe()
   })
+
+  it('does not clear the session on a 401 without a token', async () => {
+    const onUnauthorized = vi.fn()
+    const unsubscribe = subscribeUnauthorized(onUnauthorized)
+    const client = createApiClient({
+      baseUrl: 'http://api.test',
+      fetch: async () =>
+        jsonResponse(401, {
+          statusCode: 401,
+          code: 'INVALID_CREDENTIALS',
+          message: 'Invalid email or password',
+        }),
+    })
+
+    await expect(
+      client.POST('/auth/login', {
+        body: { email: 'a@b.co', password: 'password1' },
+      }),
+    ).rejects.toBeTruthy()
+    expect(onUnauthorized).not.toHaveBeenCalled()
+    unsubscribe()
+  })
 })

@@ -15,8 +15,9 @@ const middleware: Middleware = {
   },
   async onResponse({ response }) {
     if (response.ok) return
+    const hadToken = Boolean(getAccessToken())
     const error = await toApiError(response)
-    if (response.status === 401) notifyUnauthorized()
+    if (response.status === 401 && hadToken) notifyUnauthorized()
     throw error
   },
 }
