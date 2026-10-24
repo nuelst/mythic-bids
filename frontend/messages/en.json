@@ -63,6 +63,8 @@
   "auth_register_description": "Choose your role. You can bid or run auctions.",
   "auth_email": "Email",
   "auth_password": "Password",
+  "auth_show_password": "Show password",
+  "auth_hide_password": "Hide password",
   "auth_name": "Name",
   "auth_role": "I want to",
   "auth_role_bidder": "Bid",

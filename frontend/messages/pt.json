@@ -63,6 +63,8 @@
   "auth_register_description": "Escolhe o teu papel. Podes ser licitante ou leiloeiro.",
   "auth_email": "E-mail",
   "auth_password": "Palavra-passe",
+  "auth_show_password": "Mostrar palavra-passe",
+  "auth_hide_password": "Esconder palavra-passe",
   "auth_name": "Nome",
   "auth_role": "Quero",
   "auth_role_bidder": "Licitar",

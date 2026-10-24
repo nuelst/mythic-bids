@@ -2,6 +2,7 @@ import { m } from '#/paraglide/messages'
 import { Button } from '#/shared/ui/button'
 import { Field } from '#/shared/ui/field'
 import { Input } from '#/shared/ui/input'
+import { PasswordInput } from '#/shared/ui/password-input'
 import { useLoginForm } from '../view-models/use-login-form'
 
 export function LoginForm({ redirect }: { redirect?: string }) {
@@ -26,8 +27,7 @@ export function LoginForm({ redirect }: { redirect?: string }) {
         label={m.auth_password()}
         error={errors.password?.message}
       >
-        <Input
-          type="password"
+        <PasswordInput
           autoComplete="current-password"
           {...register('password')}
         />

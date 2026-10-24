@@ -4,6 +4,7 @@ import { cn } from '#/shared/lib/cn'
 import { Button } from '#/shared/ui/button'
 import { Field } from '#/shared/ui/field'
 import { Input } from '#/shared/ui/input'
+import { PasswordInput } from '#/shared/ui/password-input'
 import { useRegisterForm } from '../view-models/use-register-form'
 
 const ROLES = [
@@ -45,8 +46,7 @@ export function RegisterForm({ redirect }: { redirect?: string }) {
         label={m.auth_password()}
         error={errors.password?.message}
       >
-        <Input
-          type="password"
+        <PasswordInput
           autoComplete="new-password"
           {...register('password')}
         />
