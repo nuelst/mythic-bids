@@ -40,8 +40,9 @@ test('login, bid, outbid, close and open the receipt', async ({ browser }) => {
 
   await brunoPage.getByRole('link', { name: 'Ver os meus arremates' }).click()
   await expect(
-    brunoPage.getByRole('heading', { name: 'Venceste' }),
+    brunoPage.getByRole('heading', { name: 'Meus arremates' }),
   ).toBeVisible()
+  await expect(brunoPage.getByRole('tab', { name: 'Venceste' })).toBeVisible()
   await brunoPage.getByRole('link', { name: 'Ver comprovante' }).click()
   await expect(brunoPage.getByText('Selo válido')).toBeVisible()
   await expect(brunoPage.getByText('Cadeia íntegra')).toBeVisible()
