@@ -1,4 +1,4 @@
-import { Monitor, Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import { m } from '#/paraglide/messages'
 import { Button } from '#/shared/ui/button'
 import {
@@ -15,7 +15,6 @@ import { useTheme } from './theme-provider'
 const OPTIONS = {
   light: { icon: Sun, label: m.theme_light },
   dark: { icon: Moon, label: m.theme_dark },
-  system: { icon: Monitor, label: m.theme_system },
 } satisfies Record<Theme, unknown>
 
 function ThemeToggle() {
