@@ -2,6 +2,10 @@ import { Gavel, Search } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import type { ReactNode } from 'react'
+import { getLocale } from '#/paraglide/runtime'
+import { errorMessage } from '#/shared/i18n/error-messages'
+import { LocaleSwitcher } from '#/shared/i18n/locale-switcher'
+import { formatDateTime, formatRelativeTime } from '#/shared/lib/datetime'
 import { ThemeToggle } from '#/shared/theme/theme-toggle'
 import { Alias } from '#/shared/ui/alias'
 import {
@@ -102,8 +106,25 @@ export function DesignPage() {
     <main className="container-page grid gap-12 py-10">
       <header className="flex items-center justify-between">
         <Logo />
-        <ThemeToggle />
+        <div className="flex items-center gap-1">
+          <LocaleSwitcher />
+          <ThemeToggle />
+        </div>
       </header>
+
+      <Section title="i18n">
+        <p className="text-muted-foreground">
+          {formatDateTime('2026-10-24T15:30:00-03:00', getLocale())}
+          {' · '}
+          {formatRelativeTime(
+            new Date(Date.now() - 60 * 60 * 1000),
+            getLocale(),
+          )}
+        </p>
+        <p className="text-danger">
+          {errorMessage('BELOW_MINIMUM', { minimumCents: 125000 })}
+        </p>
+      </Section>
 
       <Section title="Cores">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
