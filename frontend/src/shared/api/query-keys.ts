@@ -21,4 +21,5 @@ export const queryKeys = {
     query ? (['me', 'bids', query] as const) : (['me', 'bids'] as const),
   receipt: (token: string) => ['receipts', token] as const,
   audit: (lotId: string) => ['audit', lotId] as const,
+  auditPublicKey: () => ['audit', 'public-key'] as const,
 }
