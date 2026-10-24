@@ -54,6 +54,7 @@ function HeaderBar() {
             <>
               <Link
                 to="/wallet"
+                search={{}}
                 className="text-muted-foreground hover:text-foreground"
               >
                 {m.nav_wallet()}

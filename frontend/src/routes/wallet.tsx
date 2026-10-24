@@ -1,17 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { m } from '#/paraglide/messages'
+import { WalletPage } from '#/features/wallet/pages/wallet-page'
+import { validateWalletSearch } from '#/features/wallet/api/search'
 import { requireRole } from '#/shared/auth/guards'
 
 export const Route = createFileRoute('/wallet')({
   ssr: false,
+  validateSearch: validateWalletSearch,
   beforeLoad: requireRole('BIDDER'),
-  component: WalletPlaceholder,
+  component: WalletRoute,
 })
 
-function WalletPlaceholder() {
-  return (
-    <main className="container-page py-10">
-      <h1 className="font-display text-3xl font-semibold">{m.nav_wallet()}</h1>
-    </main>
-  )
+function WalletRoute() {
+  return <WalletPage search={Route.useSearch()} />
 }
