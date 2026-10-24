@@ -3,6 +3,7 @@ import { AlertCircle, SearchX } from 'lucide-react'
 import { m } from '#/paraglide/messages'
 import { getLocale } from '#/paraglide/runtime'
 import { formatCents } from '#/shared/lib/money'
+import { BackLink } from '#/shared/ui/back-link'
 import { Badge } from '#/shared/ui/badge'
 import { Button, buttonVariants } from '#/shared/ui/button'
 import { CardImage } from '#/shared/ui/card-image'
@@ -96,13 +97,7 @@ export function LotRoomPage({ lotId }: { lotId: string }) {
 
   return (
     <main className="container-page grid gap-10 py-10">
-      <Link
-        to="/"
-        search={{}}
-        className="text-sm text-muted-foreground hover:text-foreground"
-      >
-        ← {m.lot_room_back()}
-      </Link>
+      <BackLink to="/" label={m.lot_room_back()} />
 
       {roomState.isPending || !room ? (
         <RoomSkeleton />
