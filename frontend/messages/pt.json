@@ -185,5 +185,20 @@
   "seller_cancel": "Cancelar",
   "seller_cancel_title": "Cancelar este lote?",
   "seller_cancel_refund": "O licitante que lidera será reembolsado em {amount}.",
-  "seller_cancel_empty": "Não há lances. O lote sai da vitrine."
+  "seller_cancel_empty": "Não há lances. O lote sai da vitrine.",
+  "bids_description": "Lotes em que deste lance, agrupados pelo resultado.",
+  "bids_empty": "Ainda não deste lances",
+  "bids_empty_hint": "Entra num lote ao vivo e faz a tua primeira oferta.",
+  "bids_error": "Não foi possível carregar os arremates",
+  "bids_browse": "Ver a vitrine",
+  "bids_outcome_winning": "A ganhar",
+  "bids_outcome_outbid": "Superado",
+  "bids_outcome_won": "Venceste",
+  "bids_outcome_lost": "Perdeste",
+  "bids_outcome_cancelled": "Cancelado",
+  "bids_my_highest": "O teu maior lance",
+  "bids_share": "Partilhar",
+  "bids_copy_link": "Copiar link do comprovante",
+  "bids_share_title": "Comprovante — {name}",
+  "bids_share_text": "Ganhei {name} por {amount} no Mythic Bids."
 }

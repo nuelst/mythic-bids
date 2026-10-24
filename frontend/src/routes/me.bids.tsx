@@ -1,17 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { m } from '#/paraglide/messages'
+import { MyBidsPage } from '#/features/bids/pages/my-bids-page'
 import { requireRole } from '#/shared/auth/guards'
+
+function validateSearch(search: Record<string, unknown>) {
+  const page = Number(search.page)
+  return Number.isInteger(page) && page > 1 ? { page } : {}
+}
 
 export const Route = createFileRoute('/me/bids')({
   ssr: false,
+  validateSearch,
   beforeLoad: requireRole('BIDDER'),
-  component: MyBidsPlaceholder,
+  component: MyBidsRoute,
 })
 
-function MyBidsPlaceholder() {
-  return (
-    <main className="container-page py-10">
-      <h1 className="font-display text-3xl font-semibold">{m.nav_bids()}</h1>
-    </main>
-  )
+function MyBidsRoute() {
+  const { page } = Route.useSearch()
+  return <MyBidsPage page={page} />
 }

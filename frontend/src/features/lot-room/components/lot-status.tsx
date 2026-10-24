@@ -69,6 +69,7 @@ export function LotStatus({
         {room.viewer?.isLeading && (
           <Link
             to="/me/bids"
+            search={{}}
             className={buttonVariants({ variant: 'secondary', size: 'sm' })}
           >
             {m.lot_room_my_bids()}

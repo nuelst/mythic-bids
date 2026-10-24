@@ -48,6 +48,7 @@ export function PrivateEvents() {
             ? m.toast_outbid_plain()
             : m.toast_outbid({ amount: formatCents(cents, getLocale()) }),
         )
+        void queryClient.invalidateQueries({ queryKey: queryKeys.myBids() })
       },
       'lot.won': (data) => {
         const payload = asRecord(data)
@@ -73,6 +74,7 @@ export function PrivateEvents() {
               }
             : undefined,
         )
+        void queryClient.invalidateQueries({ queryKey: queryKeys.myBids() })
       },
       'wallet.changed': () => {
         void queryClient.invalidateQueries({ queryKey: queryKeys.wallet() })

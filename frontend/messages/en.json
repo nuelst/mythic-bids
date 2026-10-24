@@ -185,5 +185,20 @@
   "seller_cancel": "Cancel",
   "seller_cancel_title": "Cancel this lot?",
   "seller_cancel_refund": "The leading bidder will be refunded {amount}.",
-  "seller_cancel_empty": "There are no bids. The lot will leave the showcase."
+  "seller_cancel_empty": "There are no bids. The lot will leave the showcase.",
+  "bids_description": "Lots you bid on, grouped by outcome.",
+  "bids_empty": "You have not placed any bids",
+  "bids_empty_hint": "Open a live lot and make your first offer.",
+  "bids_error": "Could not load your bids",
+  "bids_browse": "Browse the showcase",
+  "bids_outcome_winning": "Winning",
+  "bids_outcome_outbid": "Outbid",
+  "bids_outcome_won": "Won",
+  "bids_outcome_lost": "Lost",
+  "bids_outcome_cancelled": "Cancelled",
+  "bids_my_highest": "Your highest bid",
+  "bids_share": "Share",
+  "bids_copy_link": "Copy receipt link",
+  "bids_share_title": "Receipt — {name}",
+  "bids_share_text": "I won {name} for {amount} on Mythic Bids."
 }

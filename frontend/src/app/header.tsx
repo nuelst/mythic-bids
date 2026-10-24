@@ -61,6 +61,7 @@ function HeaderBar() {
               </Link>
               <Link
                 to="/me/bids"
+                search={{}}
                 className="text-muted-foreground hover:text-foreground"
               >
                 {m.nav_bids()}
