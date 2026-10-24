@@ -1,7 +1,6 @@
-/** Amounts travel as integer cents (like the API); this module is the only place that formats them. */
+import { intlLocale } from './intl-locale'
 
-const INTL_LOCALES: Record<string, string> = { pt: 'pt-BR', en: 'en-US' }
-export const intlLocale = (locale: string) => INTL_LOCALES[locale] ?? locale
+/** Amounts travel as integer cents (like the API); this module is the only place that formats them. */
 
 export function formatCents(cents: number, locale: string) {
   return new Intl.NumberFormat(intlLocale(locale), {
