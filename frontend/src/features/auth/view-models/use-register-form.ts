@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { m } from '#/paraglide/messages'
 import { isApiError } from '#/shared/api/api-error'
 import { queryKeys } from '#/shared/api/query-keys'
 import { errorMessage } from '#/shared/i18n/error-messages'
@@ -31,19 +32,19 @@ export function useRegisterForm(redirect?: string) {
     onSuccess: (session) => {
       setSession(session)
       queryClient.setQueryData(queryKeys.me(), session.user)
+      toast.success(m.toast_register())
       const home = session.user.role === 'AUCTIONEER' ? '/seller' : '/'
       void navigate({ to: safeRedirect(redirect) ?? home })
     },
     onError: (error) => {
-      if (isApiError(error) && error.code === 'EMAIL_TAKEN') {
-        form.setError('email', { message: errorMessage(error.code) })
-        return
-      }
-      toast.error(
+      const message =
         isApiError(error) && error.code
           ? errorMessage(error.code)
-          : error.message,
-      )
+          : error.message
+      toast.error(message)
+      if (isApiError(error) && error.code === 'EMAIL_TAKEN') {
+        form.setError('email', { message })
+      }
     },
   })
 

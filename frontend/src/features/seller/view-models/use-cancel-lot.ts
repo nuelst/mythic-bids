@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
+import { m } from '#/paraglide/messages'
 import { isApiError } from '#/shared/api/api-error'
 import { queryKeys } from '#/shared/api/query-keys'
 import { errorMessage } from '#/shared/i18n/error-messages'
@@ -41,6 +42,7 @@ export function useCancelLot() {
       )
     },
     onSuccess: (lot) => {
+      toast.success(m.toast_lot_cancelled())
       queryClient.setQueriesData<SellerLotsPage>(
         { queryKey: queryKeys.sellerLots() },
         (page) =>

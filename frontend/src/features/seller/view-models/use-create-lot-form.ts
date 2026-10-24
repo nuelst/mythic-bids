@@ -4,6 +4,7 @@ import { useNavigate } from '@tanstack/react-router'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { m } from '#/paraglide/messages'
 import { isApiError } from '#/shared/api/api-error'
 import { queryKeys } from '#/shared/api/query-keys'
 import { errorMessage } from '#/shared/i18n/error-messages'
@@ -34,21 +35,21 @@ export function useCreateLotForm(itemId?: string) {
   const mutation = useMutation({
     mutationFn: createLot,
     onSuccess: (lot) => {
+      toast.success(m.toast_lot_created())
       void queryClient.invalidateQueries({ queryKey: queryKeys.sellerLots() })
       void queryClient.invalidateQueries({ queryKey: queryKeys.showcase() })
       void navigate({ to: '/lots/$lotId', params: { lotId: lot.id } })
     },
     onError: (error) => {
-      if (isApiError(error) && error.code === 'INVALID_SCHEDULE') {
-        form.setError('endsAt', { message: errorMessage(error.code) })
-        form.setFocus('endsAt')
-        return
-      }
-      toast.error(
+      const message =
         isApiError(error) && error.code
           ? errorMessage(error.code)
-          : error.message,
-      )
+          : error.message
+      toast.error(message)
+      if (isApiError(error) && error.code === 'INVALID_SCHEDULE') {
+        form.setError('endsAt', { message })
+        form.setFocus('endsAt')
+      }
     },
   })
 

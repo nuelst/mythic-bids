@@ -3,6 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { m } from '#/paraglide/messages'
 import { isApiError } from '#/shared/api/api-error'
 import { queryKeys } from '#/shared/api/query-keys'
 import { useIdempotentMutation } from '#/shared/api/use-idempotent-mutation'
@@ -52,26 +53,22 @@ export function useBidForm(room: LotRoom) {
       if (context?.previous) {
         queryClient.setQueryData(queryKeys.lot(room.id), context.previous)
       }
-      if (isApiError(error) && error.code && FIELD_ERRORS.has(error.code)) {
-        form.setError('amountCents', {
-          message: errorMessage(error.code, {
-            minimumCents: error.minimumCents,
-          }),
-        })
-        form.setFocus('amountCents')
-        return
-      }
-      toast.error(
+      const message =
         isApiError(error) && error.code
           ? errorMessage(error.code, { minimumCents: error.minimumCents })
-          : error.message,
-      )
+          : error.message
+      toast.error(message)
+      if (isApiError(error) && error.code && FIELD_ERRORS.has(error.code)) {
+        form.setError('amountCents', { message })
+        form.setFocus('amountCents')
+      }
     },
     onSuccess: (result) => {
       queryClient.setQueryData<LotRoom>(queryKeys.lot(room.id), (current) =>
         current ? applyPlaceResult(current, result) : current,
       )
       form.reset({ amountCents: result.nextMinimumCents })
+      toast.success(m.toast_bid_placed())
     },
     onSettled: () => {
       void queryClient.invalidateQueries({ queryKey: queryKeys.wallet() })
