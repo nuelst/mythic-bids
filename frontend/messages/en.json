@@ -1,4 +1,21 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "app_name": "Mythic Bids"
+  "app_name": "Mythic Bids",
+  "pagination_label": "Pagination",
+  "pagination_previous": "Previous",
+  "pagination_next": "Next",
+  "pagination_status": "Page {page} of {pages}",
+  "copy": "Copy",
+  "copied": "Copied!",
+  "rarity_common": "Common",
+  "rarity_uncommon": "Uncommon",
+  "rarity_rare": "Rare",
+  "rarity_mythic": "Mythic",
+  "rarity_special": "Special",
+  "rarity_bonus": "Bonus",
+  "close": "Close",
+  "theme_label": "Theme",
+  "theme_light": "Light",
+  "theme_dark": "Dark",
+  "theme_system": "System"
 }
