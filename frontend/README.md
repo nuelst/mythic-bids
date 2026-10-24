@@ -22,6 +22,7 @@ pnpm dev               # http://localhost:5173
 | `pnpm typecheck`            | Compila as mensagens i18n, gera as rotas e corre `tsc --noEmit` |
 | `pnpm lint` / `pnpm format` | ESLint e Prettier                                               |
 | `pnpm test`                 | Testes (Vitest + Testing Library)                               |
+| `pnpm api:types`            | Regenera `src/shared/api/schema.d.ts` a partir do `/docs-json`  |
 
 ## Estrutura
 

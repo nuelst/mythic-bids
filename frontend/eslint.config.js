@@ -20,6 +20,7 @@ export default [
       'prettier.config.js',
       'src/paraglide/**',
       'src/routeTree.gen.ts',
+      'src/shared/api/schema.d.ts',
       '.output/**',
       '.tanstack/**',
     ],
