@@ -2,6 +2,10 @@
 
 Backend da Casa de Leilões online: o leiloeiro cria lotes a partir de cartas de **Magic: The Gathering** (API pública [Scryfall](https://scryfall.com/docs/api)), os licitantes depositam saldo simulado e dão lances ao vivo, e qualquer pessoa pode auditar o histórico de um lote sem login.
 
+Visão do projeto e contas de demo: [README da raiz](../README.md). Frontend: [Mythic Bids — Web](../frontend/README.md). Uso de IA: [USO-DE-IA.md](../USO-DE-IA.md).
+
+**Em produção:** https://api-mythicbids.onrender.com · [Swagger](https://api-mythicbids.onrender.com/docs)
+
 **Stack:** NestJS 12 · Prisma 7 · PostgreSQL 17 · SSE · Vitest
 
 ---
@@ -265,4 +269,4 @@ Os eventos são gravados numa **outbox** na mesma transação da alteração, po
 
 ## Uso de IA
 
-<!-- Preencher: onde e como a IA foi usada, o que foi revisto e ajustado. -->
+Usei um assistente de programação (Cursor / Claude) para escrever a maior parte do código, sob a arquitetura e as regras que eu defini. O que foi revisto, o que a IA errou e o que eu ajustei está em [USO-DE-IA.md](../USO-DE-IA.md).
