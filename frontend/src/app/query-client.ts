@@ -9,6 +9,9 @@ export function createQueryClient() {
         refetchOnWindowFocus: false,
         retry: 1,
       },
+      mutations: {
+        retry: false,
+      },
     },
   })
 }
