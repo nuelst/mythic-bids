@@ -16,3 +16,6 @@ todos.json
 src/routeTree.gen.ts
 src/paraglide
 coverage
+test-results
+playwright-report
+blob-report

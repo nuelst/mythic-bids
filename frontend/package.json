@@ -16,7 +16,8 @@
     "check": "prettier --check .",
     "api:types": "openapi-typescript ${API_DOCS_URL:-https://api-mythicbids.onrender.com/docs-json} -o src/shared/api/schema.d.ts",
     "test": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && vitest run",
-    "test:watch": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && vitest"
+    "test:watch": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && vitest",
+    "test:e2e": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && playwright test"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",
