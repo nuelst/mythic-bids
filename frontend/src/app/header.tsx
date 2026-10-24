@@ -70,6 +70,7 @@ function HeaderBar() {
           {session?.user.role === 'AUCTIONEER' && (
             <Link
               to="/seller"
+              search={{}}
               className="text-muted-foreground hover:text-foreground"
             >
               {m.nav_seller()}
