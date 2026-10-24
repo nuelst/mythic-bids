@@ -5,8 +5,14 @@ import { Field } from '#/shared/ui/field'
 import { MoneyInput } from '#/shared/ui/money-input'
 import { useDepositForm } from '../view-models/use-deposit-form'
 
-export function DepositForm() {
-  const deposit = useDepositForm()
+export function DepositForm({
+  onSuccess,
+  onCancel,
+}: {
+  onSuccess?: () => void
+  onCancel?: () => void
+}) {
+  const deposit = useDepositForm({ onSuccess })
   const {
     form: {
       control,
@@ -33,9 +39,16 @@ export function DepositForm() {
           </Field>
         )}
       />
-      <Button type="submit" loading={deposit.isSubmitting}>
-        {m.wallet_deposit_submit()}
-      </Button>
+      <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+        {onCancel && (
+          <Button type="button" variant="secondary" onClick={onCancel}>
+            {m.cancel()}
+          </Button>
+        )}
+        <Button type="submit" loading={deposit.isSubmitting}>
+          {m.wallet_deposit_submit()}
+        </Button>
+      </div>
     </form>
   )
 }

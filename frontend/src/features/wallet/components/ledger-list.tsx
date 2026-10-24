@@ -8,6 +8,14 @@ import { EmptyState } from '#/shared/ui/empty-state'
 import { Pagination } from '#/shared/ui/pagination'
 import { Price } from '#/shared/ui/price'
 import { Skeleton } from '#/shared/ui/skeleton'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '#/shared/ui/table'
 import type {
   LedgerEntry,
   LedgerEntryType,
@@ -28,35 +36,34 @@ const OUTGOING = new Set<LedgerEntryType>(['HOLD', 'CAPTURE'])
 function LedgerRow({ entry }: { entry: LedgerEntry }) {
   const outgoing = OUTGOING.has(entry.type)
   return (
-    <li className="flex flex-wrap items-baseline justify-between gap-3 py-3">
-      <div className="grid min-w-0 gap-1">
-        <p className="font-medium">{TYPE_LABEL[entry.type]()}</p>
-        <p className="text-xs text-muted-foreground">
-          {formatDateTime(entry.createdAt, getLocale())}
-          {entry.lotId && (
-            <>
-              {' · '}
-              <Link
-                to="/lots/$lotId"
-                params={{ lotId: entry.lotId }}
-                className="hover:text-foreground hover:underline"
-              >
-                {m.wallet_view_lot()}
-              </Link>
-            </>
-          )}
-        </p>
-      </div>
-      <span
+    <TableRow>
+      <TableCell className="font-medium">{TYPE_LABEL[entry.type]()}</TableCell>
+      <TableCell className="text-muted-foreground whitespace-nowrap">
+        {formatDateTime(entry.createdAt, getLocale())}
+      </TableCell>
+      <TableCell>
+        {entry.lotId ? (
+          <Link
+            to="/lots/$lotId"
+            params={{ lotId: entry.lotId }}
+            className="hover:text-foreground hover:underline"
+          >
+            {m.wallet_view_lot()}
+          </Link>
+        ) : (
+          <span className="text-muted-foreground">—</span>
+        )}
+      </TableCell>
+      <TableCell
         className={cn(
-          'flex items-baseline gap-1 font-medium',
+          'text-right font-medium whitespace-nowrap',
           outgoing ? 'text-danger' : 'text-success',
         )}
       >
         <span aria-hidden>{outgoing ? '−' : '+'}</span>
         <Price cents={entry.amountCents} />
-      </span>
-    </li>
+      </TableCell>
+    </TableRow>
   )
 }
 
@@ -71,7 +78,7 @@ export function LedgerList({
     return (
       <div className="grid gap-3">
         {Array.from({ length: 4 }, (_, index) => (
-          <Skeleton key={index} className="h-14 w-full" />
+          <Skeleton key={index} className="h-12 w-full" />
         ))}
       </div>
     )
@@ -89,11 +96,23 @@ export function LedgerList({
 
   return (
     <div className="grid gap-6">
-      <ol className="divide-y border-y">
-        {ledger.items.map((entry) => (
-          <LedgerRow key={entry.id} entry={entry} />
-        ))}
-      </ol>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>{m.wallet_ledger_type()}</TableHead>
+            <TableHead>{m.wallet_ledger_when()}</TableHead>
+            <TableHead>{m.wallet_ledger_lot()}</TableHead>
+            <TableHead className="text-right">
+              {m.wallet_ledger_amount()}
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {ledger.items.map((entry) => (
+            <LedgerRow key={entry.id} entry={entry} />
+          ))}
+        </TableBody>
+      </Table>
       <Pagination
         page={ledger.page}
         pageSize={ledger.pageSize}

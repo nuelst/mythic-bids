@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { m } from '#/paraglide/messages'
 import { isApiError } from '#/shared/api/api-error'
 import { queryKeys } from '#/shared/api/query-keys'
 import { useIdempotentMutation } from '#/shared/api/use-idempotent-mutation'
@@ -12,7 +13,7 @@ import { applyOptimisticDeposit } from '../api/wallet-view'
 import { depositSchema } from '../api/schemas'
 import type { DepositValues } from '../api/schemas'
 
-export function useDepositForm() {
+export function useDepositForm(options?: { onSuccess?: () => void }) {
   const queryClient = useQueryClient()
   const form = useForm<DepositValues>({
     resolver: zodResolver(depositSchema),
@@ -51,6 +52,8 @@ export function useDepositForm() {
     onSuccess: (wallet) => {
       queryClient.setQueryData(queryKeys.wallet(), wallet)
       form.reset({ amountCents: 10_000 })
+      toast.success(m.toast_deposit())
+      options?.onSuccess?.()
     },
     onSettled: () => {
       void queryClient.invalidateQueries({ queryKey: queryKeys.wallet() })
