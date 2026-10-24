@@ -6,7 +6,7 @@ import { setSession } from '#/shared/auth/session'
 import { useSession } from '#/shared/auth/use-session'
 import { LocaleSwitcher } from '#/shared/i18n/locale-switcher'
 import { ThemeToggle } from '#/shared/theme/theme-toggle'
-import { Button } from '#/shared/ui/button'
+import { Button, buttonVariants } from '#/shared/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,17 +33,21 @@ function HeaderBar() {
   function logout() {
     setSession(null)
     queryClient.removeQueries({ queryKey: queryKeys.me() })
-    void navigate({ to: '/' })
+    void navigate({ to: '/', search: {} })
   }
 
   return (
     <header className="border-b bg-background">
       <div className="container-page flex h-16 items-center gap-4">
-        <Link to="/" className="shrink-0">
+        <Link to="/" search={{}} className="shrink-0">
           <Logo />
         </Link>
         <nav className="flex min-w-0 flex-1 items-center gap-3 text-sm">
-          <Link to="/" className="text-muted-foreground hover:text-foreground">
+          <Link
+            to="/"
+            search={{}}
+            className="text-muted-foreground hover:text-foreground"
+          >
             {m.nav_home()}
           </Link>
           {session?.user.role === 'BIDDER' && (
@@ -98,16 +102,20 @@ function HeaderBar() {
             </DropdownMenu>
           ) : (
             <>
-              <Button variant="ghost" size="sm" asChild>
-                <Link to="/login" search={{ redirect: undefined }}>
-                  {m.nav_login()}
-                </Link>
-              </Button>
-              <Button size="sm" asChild>
-                <Link to="/register" search={{ redirect: undefined }}>
-                  {m.nav_register()}
-                </Link>
-              </Button>
+              <Link
+                to="/login"
+                search={{ redirect: undefined }}
+                className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+              >
+                {m.nav_login()}
+              </Link>
+              <Link
+                to="/register"
+                search={{ redirect: undefined }}
+                className={buttonVariants({ variant: 'primary', size: 'sm' })}
+              >
+                {m.nav_register()}
+              </Link>
             </>
           )}
         </div>

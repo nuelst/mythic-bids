@@ -26,7 +26,7 @@ export function requireAuth({
 export function requireRole(role: Role) {
   return (ctx: { location: { pathname: string; href: string } }) => {
     const { session } = requireAuth(ctx)
-    if (session.user.role !== role) throw redirect({ to: '/' })
+    if (session.user.role !== role) throw redirect({ to: '/', search: {} })
     return { session }
   }
 }
