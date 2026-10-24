@@ -69,5 +69,12 @@
   "validation_required": "Preenche este campo.",
   "validation_email": "Introduz um e-mail válido.",
   "validation_password": "A palavra-passe deve ter entre 8 e 72 caracteres.",
-  "validation_name": "O nome deve ter entre 2 e 80 caracteres."
+  "validation_name": "O nome deve ter entre 2 e 80 caracteres.",
+  "countdown_ended": "Encerrado",
+  "countdown_extended": "Prorrogado — um lance nos últimos 2 minutos.",
+  "toast_outbid": "Foste superado em {amount}",
+  "toast_outbid_plain": "Foste superado.",
+  "toast_lot_won": "Ganhaste o lote por {amount}",
+  "toast_lot_won_plain": "Ganhaste o lote.",
+  "toast_view_receipt": "Ver comprovante"
 }

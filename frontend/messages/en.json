@@ -69,5 +69,12 @@
   "validation_required": "Fill in this field.",
   "validation_email": "Enter a valid email.",
   "validation_password": "The password must be between 8 and 72 characters.",
-  "validation_name": "The name must be between 2 and 80 characters."
+  "validation_name": "The name must be between 2 and 80 characters.",
+  "countdown_ended": "Ended",
+  "countdown_extended": "Extended — a bid landed in the last 2 minutes.",
+  "toast_outbid": "You were outbid at {amount}",
+  "toast_outbid_plain": "You were outbid.",
+  "toast_lot_won": "You won the lot for {amount}",
+  "toast_lot_won_plain": "You won the lot.",
+  "toast_view_receipt": "View receipt"
 }

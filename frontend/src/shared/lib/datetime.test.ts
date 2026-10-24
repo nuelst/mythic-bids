@@ -1,4 +1,9 @@
-import { formatDate, formatDateTime, formatRelativeTime } from './datetime'
+import {
+  formatCountdown,
+  formatDate,
+  formatDateTime,
+  formatRelativeTime,
+} from './datetime'
 
 const NOW = new Date('2026-10-24T15:00:00.000Z')
 
@@ -21,5 +26,11 @@ describe('datetime', () => {
       'in 2 days',
     )
     expect(formatRelativeTime(NOW, 'en', NOW)).toBe('now')
+  })
+
+  it('formats a countdown', () => {
+    expect(formatCountdown(45_000)).toBe('00:45')
+    expect(formatCountdown(3_661_000)).toBe('1:01:01')
+    expect(formatCountdown(0)).toBeNull()
   })
 })

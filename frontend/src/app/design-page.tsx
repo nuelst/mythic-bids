@@ -7,6 +7,7 @@ import { errorMessage } from '#/shared/i18n/error-messages'
 import { LocaleSwitcher } from '#/shared/i18n/locale-switcher'
 import { formatDateTime, formatRelativeTime } from '#/shared/lib/datetime'
 import { ThemeToggle } from '#/shared/theme/theme-toggle'
+import { Countdown } from '#/shared/ui/countdown'
 import { Alias } from '#/shared/ui/alias'
 import {
   AlertDialog,
@@ -124,6 +125,11 @@ export function DesignPage() {
         <p className="text-danger">
           {errorMessage('BELOW_MINIMUM', { minimumCents: 125000 })}
         </p>
+        <div className="flex flex-wrap gap-8">
+          <Countdown endsAt={Date.now() + 90_000} />
+          <Countdown endsAt={Date.now() + 3_600_000} extended />
+          <Countdown endsAt={Date.now() - 1_000} />
+        </div>
       </Section>
 
       <Section title="Cores">
