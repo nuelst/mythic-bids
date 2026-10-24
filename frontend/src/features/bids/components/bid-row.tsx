@@ -5,8 +5,8 @@ import type { BadgeTone } from '#/shared/ui/badge'
 import { CardImage } from '#/shared/ui/card-image'
 import { Price } from '#/shared/ui/price'
 import { RarityBadge } from '#/shared/ui/rarity-badge'
-import { buttonVariants } from '#/shared/ui/button'
 import type { BidOutcome, MyBid } from '../api/bids-api'
+import { ReceiptShare } from './receipt-share'
 
 const OUTCOME = {
   WINNING: { tone: 'success' as const, label: m.bids_outcome_winning },
@@ -59,13 +59,11 @@ export function BidRow({ bid }: { bid: MyBid }) {
       </Link>
       <Price cents={amount} className="text-lg font-semibold text-gold-text" />
       {bid.receiptToken && (
-        <Link
-          to="/receipts/$token"
-          params={{ token: bid.receiptToken }}
-          className={buttonVariants({ variant: 'secondary', size: 'sm' })}
-        >
-          {m.toast_view_receipt()}
-        </Link>
+        <ReceiptShare
+          token={bid.receiptToken}
+          name={bid.lot.item.name}
+          amountCents={amount}
+        />
       )}
     </li>
   )
