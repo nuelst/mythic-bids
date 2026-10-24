@@ -1,19 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { m } from '#/paraglide/messages'
+import { LotRoomPage } from '#/features/lot-room/pages/lot-room-page'
+import { roomQueryOptions } from '#/features/lot-room/api/room-api'
 
 export const Route = createFileRoute('/lots/$lotId')({
-  ssr: false,
-  component: LotRoomPlaceholder,
+  loader: ({ context, params }) =>
+    context.queryClient.prefetchQuery(roomQueryOptions(params.lotId)),
+  component: LotRoomRoute,
 })
 
-function LotRoomPlaceholder() {
+function LotRoomRoute() {
   const { lotId } = Route.useParams()
-  return (
-    <main className="container-page py-10">
-      <h1 className="font-display text-3xl font-semibold">
-        {m.lot_room_title()}
-      </h1>
-      <p className="mt-2 font-mono text-sm text-muted-foreground">{lotId}</p>
-    </main>
-  )
+  return <LotRoomPage lotId={lotId} />
 }
