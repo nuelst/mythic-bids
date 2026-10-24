@@ -52,7 +52,7 @@ export function SellerLotRow({
       <Link
         to="/lots/$lotId"
         params={{ lotId: lot.id }}
-        className="flex min-w-0 flex-1 items-center gap-3"
+        className="group flex min-w-0 flex-1 items-center gap-3"
       >
         <CardImage
           src={lot.item.imageUrl}

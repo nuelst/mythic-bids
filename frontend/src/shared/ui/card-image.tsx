@@ -36,7 +36,9 @@ function CardImage({ src, alt, className, priority = false }: CardImageProps) {
           onLoad={() => setState('loaded')}
           onError={() => setState('error')}
           className={cn(
-            'size-full object-cover transition-opacity duration-200',
+            'size-full origin-center object-cover',
+            '[transition-property:opacity,transform] [transition-duration:500ms] [transition-timing-function:cubic-bezier(0.2,0.8,0.2,1)]',
+            'motion-safe:group-hover:scale-[1.04]',
             state === 'loaded' ? 'opacity-100' : 'opacity-0',
           )}
         />

@@ -35,7 +35,7 @@ export function BidRow({ bid }: { bid: MyBid }) {
       <Link
         to="/lots/$lotId"
         params={{ lotId: bid.lot.id }}
-        className="flex min-w-0 flex-1 items-center gap-3"
+        className="group flex min-w-0 flex-1 items-center gap-3"
       >
         <CardImage
           src={bid.lot.item.imageUrl}

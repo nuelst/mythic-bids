@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { Link, useNavigate, useRouterState } from '@tanstack/react-router'
-import { Menu } from 'lucide-react'
+import { CircleUser, Menu } from 'lucide-react'
 import { m } from '#/paraglide/messages'
 import { queryKeys } from '#/shared/api/query-keys'
 import { setSession } from '#/shared/auth/session'
@@ -81,11 +81,9 @@ function HeaderBar() {
           {session ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="max-w-28 truncate sm:max-w-40"
-                >
-                  {session.user.name}
+                <Button variant="ghost" className="max-w-36 gap-2 sm:max-w-48">
+                  <CircleUser className="size-4 shrink-0" aria-hidden />
+                  <span className="truncate">{session.user.name}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

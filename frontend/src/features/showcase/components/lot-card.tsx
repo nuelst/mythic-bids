@@ -30,7 +30,7 @@ export function LotCard({ lot, priority }: { lot: Lot; priority?: boolean }) {
     <Link
       to="/lots/$lotId"
       params={{ lotId: lot.id }}
-      className="block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group block h-full rounded-lg outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <Card className="h-full overflow-hidden transition-colors hover:border-border-strong">
         <div className="p-4 pb-0">
