@@ -8,6 +8,7 @@ import type { QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Devtools } from '#/app/devtools'
 import { AppHeader } from '#/app/header'
+import { PrivateEvents } from '#/app/private-events'
 import { Providers } from '#/app/providers'
 import { getLocale } from '#/paraglide/runtime'
 import { SessionBridge } from '#/shared/auth/session-bridge'
@@ -36,6 +37,7 @@ function RootLayout() {
   return (
     <>
       <SessionBridge />
+      <PrivateEvents />
       <AppHeader />
       <Outlet />
     </>
